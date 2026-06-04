@@ -20,28 +20,32 @@ const TABS = [
     heading: "Build a trusted data foundation for growth",
     body: "Connect IoT sensors, meters, and data streams from water systems, energy grids, and climate instruments into one central platform.",
     points: ["Reflect your organizational structure directly in PlanetMatrix","Unite internal data sources and your external value chain","Create custom metrics that aggregate any data from any source","One place for all your reporting, analysis, and management"],
-    image: "/tab-collect.png",
+    image: "/tab-collect-white.png",
+    // image: "/tab-collect.png",
   },
   {
     label: "Analyze",
     heading: "Turn your data into clear answers",
     body: "AI models process data 250 times per second, detecting anomalies and inefficiencies invisible to manual inspection, before they become costly problems.",
     points: ["Uncover climate, geopolitical, and operational risks","Detect anomalies with AI to flag issues before they escalate","Benchmark performance against peers and industry standards","Design custom dashboards to track what matters most"],
-    image: "/tab-analyze.png",
+    image: "/tab-analyze-white.png",
+    // image: "/tab-analyze.png",
   },
   {
     label: "Act",
     heading: "Maximise the commercial value of your data",
     body: "Real-time alerts, automated shutoff controls, and scenario planning tools let your team respond in seconds, all backed by live data.",
     points: ["Run scenario analyses to compare outcomes","Prioritise the actions with the biggest impact","Automated alerts with full root-cause context","Get real-time updates so nothing slips through"],
-    image: "/tab-act.png",
+    image: "/tab-act-white.png",
+    // image: "/tab-act.png",
   },
   {
     label: "Report",
     heading: "Demonstrate impact to build lasting trust",
     body: "Generate audit-ready ESG reports aligned to global frameworks at the click of a button. Share directly with investors, banks, and auditors.",
     points: ["Create compliant reports for any framework from one source","Export in branded microsites, Excel, and custom formats","Share with stakeholders in one click","Machine-readable, audit-proof, fully transparent"],
-    image: "/tab-report.png",
+    image: "/tab-report-white.png",
+    // image: "/tab-report.png",
   },
 ];
 
@@ -168,7 +172,7 @@ export default function Home() {
 
       {/* ── LOGO STRIP ── */}
       <div className="border-t border-b border-white/[0.07] py-6 overflow-hidden">
-        <p className="text-center text-[0.72rem] uppercase tracking-[0.12em] text-[#5e567a] mb-5">Trusted by sustainability teams worldwide</p>
+        <p className="text-center text-sm uppercase tracking-[0.12em] text-[#5e567a] mb-5">Trusted by sustainability teams worldwide</p>
         <div className="animate-marquee flex gap-16 items-center whitespace-nowrap w-max">
           {[...LOGOS,...LOGOS].map((l,i)=>(
             <span key={i} className="font-['Manrope'] font-bold text-[0.95rem] text-[#5e567a] opacity-60 shrink-0">{l}</span>
@@ -178,7 +182,7 @@ export default function Home() {
 
       {/* ── STATS ── */}
       <div className="py-20 px-[6%]">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
           <StatCard target={90}    suffix="%" label="Reduction in ESG reporting time with AI automation"/>
           <StatCard target={20000} suffix="K+" label="Gallons of water saved through real-time monitoring"/>
           <StatCard target={95}    suffix="%" label="Accuracy in leak & anomaly detection via AI sensors"/>
@@ -188,11 +192,11 @@ export default function Home() {
 
       {/* ── HOW IT WORKS ── */}
       <section id="how" className="py-24 px-[6%] bg-[#0e0b1a] border-t border-b border-white/[0.07]">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">How it works</span>
+            <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">How it works</span>
             <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3">Our fast-changing world requires a 360° view.</h2>
-            <p className="text-[#a89dc8] max-w-xl mx-auto leading-relaxed">From shifting regulations to emerging multi-vector risks, PlanetMatrix combines AI with expert guidance to protect value, ensure compliance, and build trust.</p>
+            <p className="text-lg text-[#a89dc8] max-w-xl mx-auto leading-relaxed">From shifting regulations to emerging multi-vector risks, PlanetMatrix combines AI with expert guidance to protect value, ensure compliance, and build trust.</p>
           </div>
 
           {/* Tab bar */}
@@ -212,13 +216,13 @@ export default function Home() {
           </div>
 
           {/* Tab content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 items-start">
             <div>
               <h3 className="font-['Manrope'] text-2xl font-bold tracking-tight text-[#f0eeff] mb-4">{TABS[activeTab].heading}</h3>
-              <p className="text-[0.95rem] text-[#a89dc8] leading-relaxed mb-6">{TABS[activeTab].body}</p>
+              <p className="text-lg text-[#a89dc8] leading-relaxed mb-6">{TABS[activeTab].body}</p>
               <ul className="space-y-3">
                 {TABS[activeTab].points.map((pt,i)=>(
-                  <li key={i} className="flex items-start gap-2.5 text-[0.9rem] text-[#a89dc8]">
+                  <li key={i} className="flex items-start gap-2.5 text-base text-[#a89dc8]">
                     <span className="mt-0.5 w-4.5 h-4.5 shrink-0 rounded-full bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 flex items-center justify-center text-[0.55rem] text-[#9d5cf6]">✓</span>
                     {pt}
                   </li>
@@ -238,16 +242,16 @@ export default function Home() {
 
       {/* ── CAPABILITIES ── */}
       <section id="solutions" className="py-24 px-[6%]">
-        <div className="max-w-5xl mx-auto">
-          <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Powerful Capabilities</span>
+        <div className="max-w-7xl mx-auto">
+          <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Powerful Capabilities</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-lg">Everything you need to manage ESG at scale</h2>
-          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">Eight capabilities, one platform, built for industries, farms, factories, and cities.</p>
+          <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">Eight capabilities, one platform, built for industries, farms, factories, and cities.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.07] rounded-2xl overflow-hidden">
             {CAPS.map((c,i)=>(
               <div key={i} className="bg-[#0e0b1a] hover:bg-[#130f22] transition-colors p-7">
                 <div className="text-2xl mb-4">{c.icon}</div>
                 <div className="font-['Manrope'] text-[0.85rem] font-bold text-[#f0eeff] uppercase tracking-wide mb-2">{c.title}</div>
-                <div className="text-[0.82rem] text-[#a89dc8] leading-relaxed">{c.desc}</div>
+                <div className="text-base text-[#a89dc8] leading-relaxed">{c.desc}</div>
               </div>
             ))}
           </div>
@@ -256,10 +260,10 @@ export default function Home() {
 
       {/* ── COMPLIANCE PATH ── */}
       <section id="compliance" className="py-24 px-[6%] bg-[#0e0b1a] border-t border-b border-white/[0.07]">
-        <div className="max-w-5xl mx-auto">
-          <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">ESG Compliance</span>
+        <div className="max-w-7xl mx-auto">
+          <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">ESG Compliance</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-lg">Your path to success</h2>
-          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">A clear path from onboarding to full compliance, automated at every step.</p>
+          <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">A clear path from onboarding to full compliance, automated at every step.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PATH_STEPS.map((p,i)=>(
               <div key={i} className="path-card-accent relative bg-[#130f22] border border-white/[0.07] rounded-2xl p-8 hover:border-[#7c3aed]/40 transition-colors overflow-hidden">
@@ -267,7 +271,7 @@ export default function Home() {
                 <p className="font-['Manrope'] text-lg font-bold text-[#f0eeff] mb-4">{p.title}</p>
                 <ul className="space-y-0">
                   {p.items.map((it,j)=>(
-                    <li key={j} className="flex items-center gap-2 text-[0.85rem] text-[#a89dc8] py-1.5 border-b border-white/[0.04]">
+                    <li key={j} className="flex items-center gap-2 text-base text-[#a89dc8] py-1.5 border-b border-white/[0.04]">
                       <span className="text-[#b97bff] text-xs">→</span>{it}
                     </li>
                   ))}
@@ -280,10 +284,10 @@ export default function Home() {
 
       {/* ── FRAMEWORKS ── */}
       <section className="py-24 px-[6%]">
-        <div className="max-w-5xl mx-auto">
-          <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Compliance Frameworks</span>
+        <div className="max-w-7xl mx-auto">
+          <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Compliance Frameworks</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-xl">Automated compliance with the world&apos;s leading sustainability frameworks</h2>
-          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">Whatever your reporting obligations, PlanetMatrix makes them faster, easier, and audit-ready, for any framework.</p>
+          <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">Whatever your reporting obligations, PlanetMatrix makes them faster, easier, and audit-ready, for any framework.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.07] rounded-2xl overflow-hidden">
             {FRAMEWORKS.map((f,i)=>(
               <div key={i} className="bg-[#0e0b1a] hover:bg-[#130f22] border-l-2 border-l-transparent hover:border-l-[#7c3aed] transition-all p-6 flex flex-col gap-2">
@@ -297,15 +301,15 @@ export default function Home() {
 
       {/* ── IMPACT PILLARS ── */}
       <section className="py-24 px-[6%] bg-[#0e0b1a] border-t border-white/[0.07]">
-        <div className="max-w-5xl mx-auto text-center">
-          <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Data. Insight. Impact.</span>
+        <div className="max-w-7xl mx-auto text-center">
+          <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Data. Insight. Impact.</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-12 max-w-2xl mx-auto">Helping organizations build a more sustainable future.</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             {PILLARS.map((p,i)=>(
               <div key={i} className="bg-[#130f22] border border-white/[0.07] rounded-2xl p-8 text-center hover:border-[#7c3aed]/40 hover:-translate-y-1 transition-all duration-300">
                 <div className="text-3xl mb-4">{p.icon}</div>
                 <div className="font-['Manrope'] text-[0.85rem] font-bold text-[#b97bff] uppercase tracking-widest mb-2">{p.title}</div>
-                <div className="text-[0.83rem] text-[#a89dc8] leading-relaxed">{p.desc}</div>
+                <div className="text-base text-[#a89dc8] leading-relaxed">{p.desc}</div>
               </div>
             ))}
           </div>
@@ -315,10 +319,10 @@ export default function Home() {
       {/* ── ABOUT ── */}
       <section id="about" className="py-24 px-[6%] border-t border-white/[0.07]">
         <div className="max-w-2xl mx-auto">
-          <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">About PlanetMatrix</span>
+          <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">About PlanetMatrix</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-5">Powering a sustainable tomorrow.</h2>
-          <p className="text-[#a89dc8] leading-[1.8] mb-5">PlanetMatrix is an ESG and climate intelligence platform built for industries, factories, farms, and buildings. We connect raw environmental data to meaningful action, combining IoT sensor technology, AI-driven analytics, and global compliance frameworks into one system.</p>
-          <p className="text-[#a89dc8] leading-[1.8]">Our mission: give every organization the tools to understand, manage, and reduce their environmental footprint in real time. Because what gets measured, gets managed.</p>
+          <p className="text-lg text-[#a89dc8] leading-[1.8] mb-5">PlanetMatrix is an ESG and climate intelligence platform built for industries, factories, farms, and buildings. We connect raw environmental data to meaningful action, combining IoT sensor technology, AI-driven analytics, and global compliance frameworks into one system.</p>
+          <p className="text-lg text-[#a89dc8] leading-[1.8]">Our mission: give every organization the tools to understand, manage, and reduce their environmental footprint in real time. Because what gets measured, gets managed.</p>
           <div className="mt-6 flex gap-8 flex-wrap">
             <div>
               <p className="font-['Manrope'] font-extrabold text-[#9d5cf6]">www.planet-matrix.com</p>
@@ -334,15 +338,15 @@ export default function Home() {
 
       {/* ── BOOK DEMO ── */}
       <section id="demo" className="py-28 px-[6%] border-t border-white/[0.07]">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div>
-            <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Book a Demo</span>
+            <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Book a Demo</span>
             <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-4">Simplify compliance. Improve performance.</h2>
-            <p className="text-[0.95rem] text-[#a89dc8] leading-relaxed mb-5">PlanetMatrix helps you simplify ESG compliance and get more from your sustainability data.</p>
-            <p className="text-sm text-[#5e567a] font-medium mb-4">Together on the call we will:</p>
+            <p className="text-lg text-[#a89dc8] leading-relaxed mb-5">PlanetMatrix helps you simplify ESG compliance and get more from your sustainability data.</p>
+            <p className="text-base text-[#5e567a] font-medium mb-4">Together on the call we will:</p>
             <ul className="space-y-3">
               {["Discuss your ESG challenges and sustainability goals","Demo the software and our AI capabilities live","Explore integration with your existing infrastructure","Discover if PlanetMatrix is the right partner for you"].map((b,i)=>(
-                <li key={i} className="flex items-start gap-2.5 text-[0.9rem] text-[#a89dc8]">
+                <li key={i} className="flex items-start gap-2.5 text-base text-[#a89dc8]">
                   <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 flex items-center justify-center text-[0.55rem] text-[#9d5cf6]">✓</span>{b}
                 </li>
               ))}
@@ -364,7 +368,7 @@ export default function Home() {
                 <SelectField label="Type of Company *" options={["Agriculture / Farming","Manufacturing / Factory","Real Estate / Property","Energy & Utilities","Financial Services","Government / Municipality","NGO / Non-Profit","Other"]}/>
                 <SelectField label="My top priority is" options={["ESG Reporting & Compliance","Carbon Accounting","Water Management","Energy Efficiency","Stakeholder Reporting"]}/>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[0.72rem] text-[#5e567a] font-medium uppercase tracking-widest">Message</label>
+                  <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">Message</label>
                   <textarea placeholder="Tell us about your ESG or sustainability goals..." rows={3}
                     className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-sm text-[#f0eeff] placeholder-[#5e567a] outline-none resize-y transition-all"/>
                 </div>
@@ -376,7 +380,7 @@ export default function Home() {
                   className="w-full mt-1 bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-[0.95rem] rounded-lg py-3.5 transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)]">
                   Request a Demo →
                 </button>
-                <p className="text-center text-[0.72rem] text-[#5e567a]">No commitment required. We typically respond within 24 hours.</p>
+                <p className="text-center text-sm text-[#5e567a]">No commitment required. We typically respond within 24 hours.</p>
               </div>
             ) : (
               <div className="bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 rounded-2xl p-8 text-center">
@@ -390,7 +394,7 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <footer className="bg-[#08060f] border-t border-white/[0.07] px-[6%] pt-16 pb-8">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 font-['Manrope'] text-lg font-extrabold tracking-tight mb-3">
               <Logo size={128} />
@@ -404,7 +408,7 @@ export default function Home() {
             { h:"Legal",    links:[["Privacy Policy","#"],["Terms of Service","#"],["Cookie Policy","#"],["Data Processing","#"]] },
           ].map(col=>(
             <div key={col.h}>
-              <h4 className="text-[0.72rem] uppercase tracking-[0.1em] text-[#5e567a] font-semibold mb-4">{col.h}</h4>
+              <h4 className="text-sm uppercase tracking-[0.1em] text-[#5e567a] font-semibold mb-4">{col.h}</h4>
               <ul className="space-y-2">
                 {col.links.map(([label,href])=>(
                   <li key={label}><a href={href} className="text-[0.85rem] text-[#a89dc8] hover:text-[#b97bff] transition-colors">{label}</a></li>
@@ -413,7 +417,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="max-w-5xl mx-auto border-t border-white/[0.07] pt-6 flex items-center justify-between flex-wrap gap-4">
+        <div className="max-w-7xl mx-auto border-t border-white/[0.07] pt-6 flex items-center justify-between flex-wrap gap-4">
           <p className="text-[0.78rem] text-[#5e567a]">© 2026 PlanetMatrix. All rights reserved. | info@planet-matrix.com</p>
           <div className="flex gap-3">
             {["in","𝕏","ig"].map((s,i)=>(
@@ -430,7 +434,7 @@ export default function Home() {
 function Field({ label, type, placeholder }: { label: string; type: string; placeholder: string }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[0.72rem] text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
+      <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
       <input type={type} placeholder={placeholder}
         className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-sm text-[#f0eeff] placeholder-[#5e567a] outline-none transition-all"/>
     </div>
@@ -440,7 +444,7 @@ function Field({ label, type, placeholder }: { label: string; type: string; plac
 function SelectField({ label, options }: { label: string; options: string[] }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[0.72rem] text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
+      <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
       <select className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 rounded-lg px-3.5 py-2.5 text-sm text-[#a89dc8] outline-none transition-all">
         <option value="">Please Select</option>
         {options.map(o=><option key={o} className="bg-[#08060f]">{o}</option>)}
