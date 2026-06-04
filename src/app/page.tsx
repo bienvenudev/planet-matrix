@@ -18,22 +18,22 @@ const TABS = [
   {
     label: "Collect",
     heading: "Build a trusted data foundation for growth",
-    body: "Connect IoT sensors, meters, and data streams from water systems, energy grids, and climate instruments into one unified source of truth.",
-    points: ["Reflect your organizational structure directly in PlanetMatrix","Unite internal data sources and your external value chain","Create custom metrics that aggregate any data from any source","One source of truth for reporting, analysis, and management"],
+    body: "Connect IoT sensors, meters, and data streams from water systems, energy grids, and climate instruments into one central platform.",
+    points: ["Reflect your organizational structure directly in PlanetMatrix","Unite internal data sources and your external value chain","Create custom metrics that aggregate any data from any source","One place for all your reporting, analysis, and management"],
     image: "/tab-collect.png",
   },
   {
     label: "Analyze",
-    heading: "Transform your data into actionable intelligence",
-    body: "AI models process data 250 times per second, detecting anomalies and inefficiencies invisible to manual inspection — before they become costly problems.",
+    heading: "Turn your data into clear answers",
+    body: "AI models process data 250 times per second, detecting anomalies and inefficiencies invisible to manual inspection, before they become costly problems.",
     points: ["Uncover climate, geopolitical, and operational risks","Detect anomalies with AI to flag issues before they escalate","Benchmark performance against peers and industry standards","Design custom dashboards to track what matters most"],
     image: "/tab-analyze.png",
   },
   {
     label: "Act",
     heading: "Maximise the commercial value of your data",
-    body: "Real-time alerts, automated shutoff controls, and scenario planning tools let your team respond in seconds — backed by data.",
-    points: ["Run scenario analyses to compare outcomes","Prioritise high-impact actions for maximum ROI","Automated alerts with root-cause context","Benefit from real-time updates to stay ahead"],
+    body: "Real-time alerts, automated shutoff controls, and scenario planning tools let your team respond in seconds, all backed by live data.",
+    points: ["Run scenario analyses to compare outcomes","Prioritise the actions with the biggest impact","Automated alerts with full root-cause context","Get real-time updates so nothing slips through"],
     image: "/tab-act.png",
   },
   {
@@ -82,7 +82,7 @@ const PATH_STEPS = [
 const PILLARS = [
   { icon:"🌱", title:"Drive Impact",       desc:"Reduce emissions and create positive environmental impact across your operations and value chain." },
   { icon:"🛡️", title:"Reduce Risk",        desc:"Mitigate regulatory risks and ensure compliance with evolving international ESG standards." },
-  { icon:"⏱️", title:"Save Time & Costs",  desc:"Automate processes and optimize resource efficiency — turn weeks of reporting into hours." },
+  { icon:"⏱️", title:"Save Time & Costs",  desc:"Automate your reporting and resource tracking. Cut weeks of work down to hours." },
   { icon:"🤝", title:"Build Trust",        desc:"Increase transparency and strengthen stakeholder trust with audit-ready, verifiable data." },
 ];
 
@@ -157,7 +157,7 @@ export default function Home() {
           </h1>
           <p className="animate-fade-up-2 font-['Manrope'] font-extrabold leading-tight tracking-[-0.025em] text-[clamp(1.6rem,4vw,3rem)] text-[#b97bff] mb-6">Infinite Impact.</p>
           <p className="animate-fade-up-3 text-lg text-[#a89dc8] max-w-xl leading-relaxed mb-10">
-            Manage all ESG needs on one platform, automate your reporting, and unlock a 360‑degree view of sustainability performance — for industries, farms, factories, and cities worldwide.
+            Manage all your ESG needs on one platform, automate your reporting, and get a complete view of sustainability performance across industries, farms, factories, and cities worldwide.
           </p>
           <div className="animate-fade-up-4 flex gap-4 flex-wrap justify-center">
             <button onClick={()=>scrollTo("demo")} className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-9 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book a demo</button>
@@ -168,7 +168,7 @@ export default function Home() {
 
       {/* ── LOGO STRIP ── */}
       <div className="border-t border-b border-white/[0.07] py-6 overflow-hidden">
-        <p className="text-center text-[0.72rem] uppercase tracking-[0.12em] text-[#5e567a] mb-5">Trusted by forward-thinking organizations</p>
+        <p className="text-center text-[0.72rem] uppercase tracking-[0.12em] text-[#5e567a] mb-5">Trusted by sustainability teams worldwide</p>
         <div className="animate-marquee flex gap-16 items-center whitespace-nowrap w-max">
           {[...LOGOS,...LOGOS].map((l,i)=>(
             <span key={i} className="font-['Manrope'] font-bold text-[0.95rem] text-[#5e567a] opacity-60 shrink-0">{l}</span>
@@ -227,7 +227,7 @@ export default function Home() {
             </div>
             <Image
               src={TABS[activeTab].image}
-              alt={`${TABS[activeTab].label} — PlanetMatrix dashboard`}
+              alt={`${TABS[activeTab].label} in PlanetMatrix`}
               width={720}
               height={480}
               className="w-full h-auto rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)]"
@@ -241,7 +241,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Powerful Capabilities</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-lg">Everything you need to manage ESG at scale</h2>
-          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">Eight integrated capabilities, one unified platform — built for industries, farms, factories, and cities.</p>
+          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">Eight capabilities, one platform, built for industries, farms, factories, and cities.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.07] rounded-2xl overflow-hidden">
             {CAPS.map((c,i)=>(
               <div key={i} className="bg-[#0e0b1a] hover:bg-[#130f22] transition-colors p-7">
@@ -259,7 +259,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">ESG Compliance</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-lg">Your path to success</h2>
-          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">A clear, guided journey from onboarding to full compliance — automated every step of the way.</p>
+          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">A clear path from onboarding to full compliance, automated at every step.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PATH_STEPS.map((p,i)=>(
               <div key={i} className="path-card-accent relative bg-[#130f22] border border-white/[0.07] rounded-2xl p-8 hover:border-[#7c3aed]/40 transition-colors overflow-hidden">
@@ -283,7 +283,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Compliance Frameworks</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-xl">Automated compliance with the world&apos;s leading sustainability frameworks</h2>
-          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">Whatever your reporting obligations, PlanetMatrix makes them faster, easier, and audit-ready — across every framework.</p>
+          <p className="text-[#a89dc8] max-w-md leading-relaxed mb-12">Whatever your reporting obligations, PlanetMatrix makes them faster, easier, and audit-ready, for any framework.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.07] rounded-2xl overflow-hidden">
             {FRAMEWORKS.map((f,i)=>(
               <div key={i} className="bg-[#0e0b1a] hover:bg-[#130f22] border-l-2 border-l-transparent hover:border-l-[#7c3aed] transition-all p-6 flex flex-col gap-2">
@@ -299,7 +299,7 @@ export default function Home() {
       <section className="py-24 px-[6%] bg-[#0e0b1a] border-t border-white/[0.07]">
         <div className="max-w-5xl mx-auto text-center">
           <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Data. Insight. Impact.</span>
-          <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-12 max-w-2xl mx-auto">Empowering organizations to build a sustainable future with confidence.</h2>
+          <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-12 max-w-2xl mx-auto">Helping organizations build a more sustainable future.</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             {PILLARS.map((p,i)=>(
               <div key={i} className="bg-[#130f22] border border-white/[0.07] rounded-2xl p-8 text-center hover:border-[#7c3aed]/40 hover:-translate-y-1 transition-all duration-300">
@@ -317,7 +317,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto">
           <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">About PlanetMatrix</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-5">Powering a sustainable tomorrow.</h2>
-          <p className="text-[#a89dc8] leading-[1.8] mb-5">PlanetMatrix is an intelligent ESG and climate intelligence platform built for industries, factories, farms, and buildings. We bridge the gap between raw environmental data and meaningful action — combining IoT sensor technology, AI-driven analytics, and global compliance frameworks into one accessible system.</p>
+          <p className="text-[#a89dc8] leading-[1.8] mb-5">PlanetMatrix is an ESG and climate intelligence platform built for industries, factories, farms, and buildings. We connect raw environmental data to meaningful action, combining IoT sensor technology, AI-driven analytics, and global compliance frameworks into one system.</p>
           <p className="text-[#a89dc8] leading-[1.8]">Our mission: give every organization the tools to understand, manage, and reduce their environmental footprint in real time. Because what gets measured, gets managed.</p>
           <div className="mt-6 flex gap-8 flex-wrap">
             <div>
@@ -337,8 +337,8 @@ export default function Home() {
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div>
             <span className="text-[0.72rem] uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Book a Demo</span>
-            <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-4">Streamline compliance. Enhance performance.</h2>
-            <p className="text-[0.95rem] text-[#a89dc8] leading-relaxed mb-5">PlanetMatrix helps you streamline ESG compliance and unlock the full potential of your sustainability data.</p>
+            <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-4">Simplify compliance. Improve performance.</h2>
+            <p className="text-[0.95rem] text-[#a89dc8] leading-relaxed mb-5">PlanetMatrix helps you simplify ESG compliance and get more from your sustainability data.</p>
             <p className="text-sm text-[#5e567a] font-medium mb-4">Together on the call we will:</p>
             <ul className="space-y-3">
               {["Discuss your ESG challenges and sustainability goals","Demo the software and our AI capabilities live","Explore integration with your existing infrastructure","Discover if PlanetMatrix is the right partner for you"].map((b,i)=>(
@@ -380,7 +380,7 @@ export default function Home() {
               </div>
             ) : (
               <div className="bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 rounded-2xl p-8 text-center">
-                <p className="font-['Manrope'] text-lg font-bold text-[#b97bff]">🌍 Thank you — we&apos;ve received your request!</p>
+                <p className="font-['Manrope'] text-lg font-bold text-[#b97bff]">🌍 Thank you, we&apos;ve received your request!</p>
                 <p className="text-sm text-[#a89dc8] mt-2">A PlanetMatrix team member will be in touch within 24 hours.</p>
               </div>
             )}
