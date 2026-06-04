@@ -20,28 +20,28 @@ const TABS = [
     heading: "Build a trusted data foundation for growth",
     body: "Connect IoT sensors, meters, and data streams from water systems, energy grids, and climate instruments into one unified source of truth.",
     points: ["Reflect your organizational structure directly in PlanetMatrix","Unite internal data sources and your external value chain","Create custom metrics that aggregate any data from any source","One source of truth for reporting, analysis, and management"],
-    visual: "collect",
+    image: "/tab-collect.png",
   },
   {
     label: "Analyze",
     heading: "Transform your data into actionable intelligence",
     body: "AI models process data 250 times per second, detecting anomalies and inefficiencies invisible to manual inspection — before they become costly problems.",
     points: ["Uncover climate, geopolitical, and operational risks","Detect anomalies with AI to flag issues before they escalate","Benchmark performance against peers and industry standards","Design custom dashboards to track what matters most"],
-    visual: "analyze",
+    image: "/tab-analyze.png",
   },
   {
     label: "Act",
     heading: "Maximise the commercial value of your data",
     body: "Real-time alerts, automated shutoff controls, and scenario planning tools let your team respond in seconds — backed by data.",
     points: ["Run scenario analyses to compare outcomes","Prioritise high-impact actions for maximum ROI","Automated alerts with root-cause context","Benefit from real-time updates to stay ahead"],
-    visual: "act",
+    image: "/tab-act.png",
   },
   {
     label: "Report",
     heading: "Demonstrate impact to build lasting trust",
     body: "Generate audit-ready ESG reports aligned to global frameworks at the click of a button. Share directly with investors, banks, and auditors.",
     points: ["Create compliant reports for any framework from one source","Export in branded microsites, Excel, and custom formats","Share with stakeholders in one click","Machine-readable, audit-proof, fully transparent"],
-    visual: "report",
+    image: "/tab-report.png",
   },
 ];
 
@@ -122,124 +122,12 @@ function StatCard({ target, suffix, label }: { target: number; suffix: string; l
   );
 }
 
-/* ─── Mock dashboard visuals ────────────────────────────── */
-const PanelShell = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="rounded-2xl border border-[#7c3aed]/10 bg-[#130f22] overflow-hidden shadow-[0_0_60px_rgba(124,58,237,0.08)]">
-    <div className="flex items-center gap-2 bg-[#1a1530] border-b border-white/[0.07] px-4 py-2.5">
-      <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"/>
-      <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]"/>
-      <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]"/>
-      <span className="text-[0.7rem] text-[#5e567a] ml-2">{title}</span>
-    </div>
-    <div className="p-5">{children}</div>
-  </div>
-);
-
-const CollectVisual = () => (
-  <PanelShell title="Data Sources — Live">
-    <table className="w-full text-xs border-collapse">
-      <thead>
-        <tr>{["Source","Account","Status","Metrics"].map(h=><th key={h} className="text-left text-[#5e567a] font-medium pb-2 px-1 border-b border-white/[0.07]">{h}</th>)}</tr>
-      </thead>
-      <tbody>
-        {[
-          ["Water Sensors","Self-owned","active","32/80"],
-          ["Energy Grid",  "Self-owned","active","28/60"],
-          ["Supply Chain", "Partner +1","active","41/100"],
-          ["Climate API",  "External",  "risk",  "12/40"],
-          ["Factory Floor","IoT Direct","pending","0/50"],
-        ].map(([src,acc,status,metrics])=>(
-          <tr key={src} className="border-b border-white/[0.04]">
-            <td className="py-2 px-1 text-[#a89dc8]">{src}</td>
-            <td className="py-2 px-1 text-[#a89dc8]">{acc}</td>
-            <td className="py-2 px-1">
-              <span className={`px-2 py-0.5 rounded-full text-[0.65rem] font-semibold ${
-                status==="active"  ? "bg-green-500/10 text-green-400" :
-                status==="risk"    ? "bg-red-500/10 text-red-400" :
-                                     "bg-slate-500/10 text-slate-400"
-              }`}>{status==="active"?"Active":status==="risk"?"At Risk":"Pending"}</span>
-            </td>
-            <td className="py-2 px-1 text-[#a89dc8]">{metrics}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </PanelShell>
-);
-
-const AnalyzeVisual = () => (
-  <PanelShell title="Risk Analysis">
-    <p className="text-[0.72rem] text-[#5e567a] uppercase tracking-widest mb-4">Risk Exposure Score</p>
-    {[
-      { name:"Water Leakage",   pct:15, color:"#4ade80", label:"Low 15/100" },
-      { name:"Carbon Emissions",pct:43, color:"#facc15", label:"Med 43/100" },
-      { name:"Energy Waste",    pct:67, color:"#f97316", label:"High 67/100" },
-      { name:"Supply Chain",    pct:88, color:"#ef4444", label:"High 88/100" },
-    ].map(r=>(
-      <div key={r.name} className="flex items-center gap-3 py-2.5 border-b border-white/[0.04]">
-        <span className="text-[0.8rem] text-[#a89dc8] w-36 shrink-0">{r.name}</span>
-        <div className="flex-1 h-1 bg-[#221d3a] rounded-full">
-          <div className="h-full rounded-full" style={{width:`${r.pct}%`,background:r.color}}/>
-        </div>
-        <span className="text-[0.75rem] text-[#5e567a] shrink-0 w-24 text-right">{r.label}</span>
-      </div>
-    ))}
-  </PanelShell>
-);
-
-const ActVisual = () => (
-  <PanelShell title="Impact Simulator">
-    <p className="text-[0.72rem] text-[#5e567a] uppercase tracking-widest mb-4">Scope Emissions Reduction</p>
-    {[
-      { l:"Scope 1 — Direct", pct:72, c:"#7c3aed", v:"−72%" },
-      { l:"Scope 2 — Energy", pct:54, c:"#9d5cf6", v:"−54%" },
-      { l:"Scope 3 — Supply", pct:31, c:"#b97bff", v:"−31%" },
-    ].map(s=>(
-      <div key={s.l} className="flex items-center gap-3 mb-3">
-        <span className="text-[0.78rem] text-[#a89dc8] w-36 shrink-0">{s.l}</span>
-        <div className="flex-1 h-1.5 bg-[#221d3a] rounded-full">
-          <div className="h-full rounded-full" style={{width:`${s.pct}%`,background:s.c}}/>
-        </div>
-        <span className="text-[0.78rem] text-[#5e567a] w-8 text-right">{s.v}</span>
-      </div>
-    ))}
-    <div className="mt-4 p-3 rounded-lg border border-[#7c3aed]/10 bg-[#7c3aed]/10">
-      <p className="text-[0.72rem] text-[#b97bff] font-semibold">Projected Annual Savings</p>
-      <p className="font-['Manrope'] text-2xl font-extrabold text-[#f0eeff] mt-1">$2.4M CO₂ credits</p>
-    </div>
-  </PanelShell>
-);
-
-const ReportVisual = () => (
-  <PanelShell title="Reporting Summary">
-    <p className="text-[0.72rem] text-[#5e567a] uppercase tracking-widest mb-4">Framework Completion</p>
-    {[
-      { n:"CSRD", pct:78, c:"#7c3aed" },
-      { n:"PCAF", pct:91, c:"#9d5cf6" },
-      { n:"SFDR", pct:65, c:"#b97bff" },
-      { n:"GRI",  pct:84, c:"#7c3aed" },
-    ].map(r=>(
-      <div key={r.n} className="flex items-center gap-3 mb-3">
-        <span className="text-[0.78rem] text-[#a89dc8] w-12 shrink-0">{r.n}</span>
-        <div className="flex-1 h-1.5 bg-[#221d3a] rounded-full">
-          <div className="h-full rounded-full" style={{width:`${r.pct}%`,background:r.c}}/>
-        </div>
-        <span className="text-[0.78rem] text-[#5e567a] w-8 text-right">{r.pct}%</span>
-      </div>
-    ))}
-    <p className="text-[0.72rem] text-[#b97bff] mt-2">✦ 78% automated via PlanetMatrix AI</p>
-  </PanelShell>
-);
-
-const VISUALS = { collect: CollectVisual, analyze: AnalyzeVisual, act: ActVisual, report: ReportVisual };
 
 /* ─── Page ──────────────────────────────────────────────── */
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  const Visual = VISUALS[TABS[activeTab].visual as keyof typeof VISUALS];
-
   return (
     <>
       {/* ── NAV ── */}
@@ -337,7 +225,13 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <Visual />
+            <Image
+              src={TABS[activeTab].image}
+              alt={`${TABS[activeTab].label} — PlanetMatrix dashboard`}
+              width={720}
+              height={480}
+              className="w-full h-auto rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)]"
+            />
           </div>
         </div>
       </section>
