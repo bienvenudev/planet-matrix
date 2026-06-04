@@ -2,13 +2,13 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
-const Logo = ({ size = 128}: { size?: number }) => (
+const Logo = ({ size = 140 }: { size?: number }) => (
   <Image
     src="/planet-matrix-logo.jpeg"
     alt="PlanetMatrix logo"
     width={size}
     height={size}
-    className="rounded-full object-cover"
+    className="rounded-full object-cover shrink-0"
     priority
   />
 );
@@ -499,7 +499,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 font-['Manrope'] text-lg font-extrabold tracking-tight mb-3">
-              <Logo size={28}/><span className="text-[#f0eeff]">Planet</span><span className="text-[#9d5cf6]">Matrix</span>
+              <Logo size={128} />
             </div>
             <p className="text-[0.85rem] text-[#5e567a] leading-relaxed max-w-[220px]">One Platform. All Your ESG. Infinite Impact.</p>
             <p className="text-[0.8rem] text-[#b97bff] mt-2">www.planet-matrix.com</p>
