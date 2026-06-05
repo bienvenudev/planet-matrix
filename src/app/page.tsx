@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import ReportDashboard from "@/components/ReportDashboard";
 
 const Logo = ({ size = 140 }: { size?: number }) => (
   <Image
@@ -18,76 +19,74 @@ const TABS = [
   {
     label: "Collect",
     heading: "Build a trusted data foundation for growth",
-    body: "Connect IoT sensors, meters, and data streams from water systems, energy grids, and climate instruments into one central platform.",
-    points: ["Reflect your organizational structure directly in PlanetMatrix","Unite internal data sources and your external value chain","Create custom metrics that aggregate any data from any source","One place for all your reporting, analysis, and management"],
-    image: "/tab-collect-white.png",
-    // image: "/tab-collect.png",
+    body: "Connect IoT sensors, meters, and data streams from water systems, energy grids, and climate instruments into one central platform, automating Scope 1, 2, and 3 data collection and calculations.",
+    points: ["Reflect your organizational structure directly in PlanetMatrix", "Unite internal data sources and your external value chain", "Create custom metrics that aggregate any data from any source", "Save up to 90% of water, energy, and Scope 1-3 emissions reporting time"],
+    image: "/tab-collect.png",
   },
   {
     label: "Analyze",
-    heading: "Turn your data into clear answers",
-    body: "AI models process data 250 times per second, detecting anomalies and inefficiencies invisible to manual inspection, before they become costly problems.",
-    points: ["Uncover climate, geopolitical, and operational risks","Detect anomalies with AI to flag issues before they escalate","Benchmark performance against peers and industry standards","Design custom dashboards to track what matters most"],
-    image: "/tab-analyze-white.png",
-    // image: "/tab-analyze.png",
+    heading: "Turn your data into clear intelligence",
+    body: "Our intelligence layer processes data 250 times per second, detecting anomalies and inefficiencies invisible to manual inspection, giving your team the insight to act before problems become costly.",
+    points: ["Uncover climate, geopolitical, cybersecurity, and operational risks", "Detect anomalies with AI to flag issues before they escalate", "Benchmark performance against peers and industry standards", "Design custom dashboards to track what matters most"],
+    image: "/tab-analyze.png",
   },
   {
     label: "Act",
-    heading: "Maximise the commercial value of your data",
-    body: "Real-time alerts, automated shutoff controls, and scenario planning tools let your team respond in seconds, all backed by live data.",
-    points: ["Run scenario analyses to compare outcomes","Prioritise the actions with the biggest impact","Automated alerts with full root-cause context","Get real-time updates so nothing slips through"],
+    heading: "Maximize the commercial value of your data",
+    body: "Turn ESG data into commercial advantage. Real-time alerts, automated controls, and scenario planning tools give your team the speed to protect revenue, cut costs, and drive measurable ROI, all backed by live data.",
+    points: ["Run scenario analyses to compare outcomes and protect margin", "Prioritise actions that drive the strongest ROI and commercial return", "Real-time alerts with root-cause context, stop problems before they cost you", "Embed ESG into your commercial strategy, not just compliance"],
     image: "/tab-act-white.png",
     // image: "/tab-act.png",
   },
   {
     label: "Report",
     heading: "Demonstrate impact to build lasting trust",
-    body: "Generate audit-ready ESG reports aligned to global frameworks at the click of a button. Share directly with investors, banks, and auditors.",
-    points: ["Create compliant reports for any framework from one source","Export in branded microsites, Excel, and custom formats","Share with stakeholders in one click","Machine-readable, audit-proof, fully transparent"],
+    body: "Generate audit-ready CSRD, GRI, and ESG reports aligned to global frameworks at the click of a button. Share directly with manufacturing, farms, airports, hotels, and banks.",
+    points: ["Generate CSRD-ready and GRI-compliant reports from one data source", "Export in branded microsites, Excel, and custom formats", "Share with stakeholders in one click", "Machine-readable, audit-proof, fully transparent"],
     image: "/tab-report-white.png",
     // image: "/tab-report.png",
   },
 ];
 
 const CAPS = [
-  { icon: "📋", title: "Automated Reporting",           desc: "Save up to 90% of ESG reporting time with AI and automations." },
-  { icon: "⚡", title: "Fast-Track ESG Compliance",      desc: "Reduce manual work and accelerate ESG compliance with AI-driven workflows." },
-  { icon: "🔗", title: "Microsite & Stakeholder Sharing",desc: "Share results with stakeholders in one click via a branded, custom microsite." },
-  { icon: "⚖️", title: "Double Materiality",             desc: "Simplify your assessment with guided steps and expert support for ESRS compliance." },
-  { icon: "🌍", title: "CO₂ Carbon Accounting",          desc: "Measure and report your carbon footprint in minutes with audit-proof results." },
-  { icon: "🎯", title: "Targets & Actions",              desc: "Set goals, track progress and take actions that drive measurable results." },
-  { icon: "📊", title: "Benchmarks & Simulations",       desc: "Compare performance, run simulations and identify opportunities to improve." },
-  { icon: "⚙️", title: "Real-Time Insights",             desc: "Custom dashboards to monitor ESG performance and make better decisions." },
+  { icon: "📋", title: "Automated Reporting", desc: "Save up to 90% of ESG reporting time with AI and automations." },
+  { icon: "⚡", title: "Fast-Track ESG Compliance", desc: "Reduce manual work and accelerate ESG compliance with AI-driven workflows." },
+  { icon: "🔗", title: "Microsite & Stakeholder Sharing", desc: "Share results with stakeholders in one click via a branded, custom microsite." },
+  { icon: "⚖️", title: "Double Materiality", desc: "Simplify your assessment with guided steps and expert support for ESRS compliance." },
+  { icon: "🌍", title: "CO₂ Carbon Accounting", desc: "Measure and report your carbon footprint in minutes with audit-proof results." },
+  { icon: "🎯", title: "Targets & Actions", desc: "Set goals, track progress and take actions that drive measurable results." },
+  { icon: "📊", title: "Benchmarks & Simulations", desc: "Compare performance, run simulations and identify opportunities to improve." },
+  { icon: "⚙️", title: "Real-Time Insights", desc: "Custom dashboards to monitor ESG performance and make better decisions." },
 ];
 
 const FRAMEWORKS = [
-  { abbr: "GRI",     name: "Global Reporting Initiative" },
-  { abbr: "CSRD",    name: "Corporate Sustainability Reporting Directive" },
-  { abbr: "GHG",     name: "Greenhouse Gas Protocol" },
-  { abbr: "SFDR",    name: "Sustainable Finance Disclosure Regulation" },
-  { abbr: "PCAF",    name: "Partnership for Carbon Accounting Financials" },
-  { abbr: "TCFD",    name: "Task Force on Climate Disclosures" },
-  { abbr: "ISO 14001",name: "Environmental Management Systems" },
-  { abbr: "ESRS",    name: "European Sustainability Reporting Standards" },
-  { abbr: "CDP",     name: "Carbon Disclosure Project" },
-  { abbr: "SDGs",    name: "UN Sustainable Development Goals" },
-  { abbr: "VSME",    name: "Voluntary SME Standard" },
-  { abbr: "SASB",    name: "Sustainability Accounting Standards Board" },
+  { abbr: "GRI", name: "Global Reporting Initiative" },
+  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive" },
+  { abbr: "GHG", name: "Greenhouse Gas Protocol" },
+  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation" },
+  { abbr: "PCAF", name: "Partnership for Carbon Accounting Financials" },
+  { abbr: "TCFD", name: "Task Force on Climate Disclosures" },
+  { abbr: "ISO 14001", name: "Environmental Management Systems" },
+  { abbr: "ESRS", name: "European Sustainability Reporting Standards" },
+  { abbr: "CDP", name: "Carbon Disclosure Project" },
+  { abbr: "SDGs", name: "UN Sustainable Development Goals" },
+  { abbr: "VSME", name: "Voluntary SME Standard" },
+  { abbr: "SASB", name: "Sustainability Accounting Standards Board" },
 ];
 
-const LOGOS = ["AgroVest Group","ClimaFactory EU","NexaEnergy Africa","AquaFlow Industries","GreenBuilds Co.","EcoVentures MENA","CarbonPath Ltd","SustainCorp","FarmTech Jordan"];
+const LOGOS = ["AgroVest Group", "ClimaFactory EU", "NexaEnergy Africa", "AquaFlow Industries", "GreenBuilds Co.", "EcoVentures MENA", "CarbonPath Ltd", "SustainCorp", "FarmTech Jordan"];
 
 const PATH_STEPS = [
-  { step:"Step 01", title:"Get Started",     items:["Double materiality assessment","Carbon accounting setup","External data collection","Benchmarks & simulations"] },
-  { step:"Step 02", title:"Report",          items:["Integrated ESG report","CSRD reporting","Taxonomy reporting","Audit & assurance","Machine-readable export"] },
-  { step:"Step 03", title:"Stay Compliant",  items:["CSRD / ESRS compliant","Taxonomy aligned","Full audit trails","Continuous compliance monitoring"] },
+  { step: "Step 01", title: "Get Started", items: ["Double materiality assessment", "Carbon accounting setup", "External data collection", "Benchmarks & simulations"] },
+  { step: "Step 02", title: "Report", items: ["Integrated ESG report", "CSRD reporting", "Taxonomy reporting", "Audit & assurance", "Machine-readable export"] },
+  { step: "Step 03", title: "Stay Compliant", items: ["CSRD / ESRS compliant", "Taxonomy aligned", "Full audit trails", "Continuous compliance monitoring"] },
 ];
 
 const PILLARS = [
-  { icon:"🌱", title:"Drive Impact",       desc:"Reduce emissions and create positive environmental impact across your operations and value chain." },
-  { icon:"🛡️", title:"Reduce Risk",        desc:"Mitigate regulatory risks and ensure compliance with evolving international ESG standards." },
-  { icon:"⏱️", title:"Save Time & Costs",  desc:"Automate your reporting and resource tracking. Cut weeks of work down to hours." },
-  { icon:"🤝", title:"Build Trust",        desc:"Increase transparency and strengthen stakeholder trust with audit-ready, verifiable data." },
+  { icon: "🌱", title: "Drive Impact", desc: "Reduce emissions and create positive environmental impact across your operations and value chain." },
+  { icon: "🛡️", title: "Reduce Risk", desc: "Mitigate regulatory risks and ensure compliance with evolving international ESG standards." },
+  { icon: "⏱️", title: "Save Time & Costs", desc: "Automate your reporting and resource tracking. Cut weeks of work down to hours." },
+  { icon: "🤝", title: "Build Trust", desc: "Increase transparency and strengthen stakeholder trust with audit-ready, verifiable data." },
 ];
 
 /* ─── Counter hook ──────────────────────────────────────── */
@@ -119,9 +118,9 @@ function StatCard({ target, suffix, label }: { target: number; suffix: string; l
     return () => obs.disconnect();
   }, []);
   return (
-    <div ref={ref} className="rounded-2xl border border-white/[0.07] bg-[#0e0b1a] p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#7c3aed]/40">
-      <div className="font-['Manrope'] text-[2.6rem] font-extrabold leading-none text-[#9d5cf6] mb-2">{val}</div>
-      <div className="text-sm text-[#a89dc8] leading-snug">{label}</div>
+    <div ref={ref} className="rounded-2xl border border-white/[0.07] bg-[#0e0b1a] p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#7c3aed]/40">
+      <div className="font-['Manrope'] text-[2.4rem] font-extrabold leading-none text-[#9d5cf6] mb-2">{val}</div>
+      <div className="text-base text-[#a89dc8] leading-snug">{label}</div>
     </div>
   );
 }
@@ -141,31 +140,31 @@ export default function Home() {
           {/* <span className="text-[#f0eeff]">Planet</span><span className="text-[#9d5cf6]">Matrix</span> */}
         </div>
         <ul className="hidden md:flex items-center gap-8 list-none">
-          {["Solutions","How It Works","Compliance","About"].map((l,i)=>(
-            <li key={l}><a href={["#solutions","#how","#compliance","#about"][i]} className="text-sm text-[#a89dc8] hover:text-[#f0eeff] transition-colors">{l}</a></li>
+          {["Solutions", "How It Works", "Compliance", "About"].map((l, i) => (
+            <li key={l}><a href={["#solutions", "#how", "#compliance", "#about"][i]} className="text-sm text-[#a89dc8] hover:text-[#f0eeff] transition-colors">{l}</a></li>
           ))}
         </ul>
         <div className="flex items-center gap-3">
           <button className="text-sm font-medium text-[#a89dc8] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#f0eeff] rounded-lg px-4 py-2 bg-transparent transition-all">Log In</button>
-          <button onClick={()=>scrollTo("demo")} className="text-sm font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book a demo</button>
+          <button onClick={() => scrollTo("demo")} className="text-sm font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book a demo</button>
         </div>
       </nav>
 
       {/* ── HERO ── */}
       <section id="top" className="relative min-h-screen flex flex-col items-center justify-center text-center px-[6%] pt-32 pb-20 overflow-hidden">
-        <div className="hero-glow"/>
-        <div className="hero-grid-bg"/>
+        <div className="hero-glow" />
+        <div className="hero-grid-bg" />
         <div className="relative z-10 flex flex-col items-center">
           <h1 className="animate-fade-up-1 font-['Manrope'] font-extrabold leading-[1.06] tracking-[-0.03em] text-[clamp(2.6rem,6.5vw,5rem)] text-[#f0eeff] max-w-4xl mb-1">
-            One Platform.<br/><span className="text-[#9d5cf6]">All Your ESG.</span>
+            One Platform.<br /><span className="text-[#9d5cf6]">All Your ESG.</span>
           </h1>
           <p className="animate-fade-up-2 font-['Manrope'] font-extrabold leading-tight tracking-[-0.025em] text-[clamp(1.6rem,4vw,3rem)] text-[#b97bff] mb-6">Infinite Impact.</p>
           <p className="animate-fade-up-3 text-lg text-[#a89dc8] max-w-xl leading-relaxed mb-10">
-            Manage all your ESG needs on one platform, automate your reporting, and get a complete view of sustainability performance across industries, farms, factories, and cities worldwide.
+            Manage all your ESG needs on one platform, automate your reporting, and get a complete view of sustainability performance across industries, farms, factories, and smart cities worldwide.
           </p>
           <div className="animate-fade-up-4 flex gap-4 flex-wrap justify-center">
-            <button onClick={()=>scrollTo("demo")} className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-9 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book a demo</button>
-            <button onClick={()=>scrollTo("how")} className="text-base font-medium text-[#f0eeff] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#b97bff] rounded-xl px-9 py-3.5 bg-transparent transition-all">See how it works</button>
+            <button onClick={() => scrollTo("demo")} className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-9 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book a demo</button>
+            <button onClick={() => scrollTo("how")} className="text-base font-medium text-[#f0eeff] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#b97bff] rounded-xl px-9 py-3.5 bg-transparent transition-all">See how it works</button>
           </div>
         </div>
       </section>
@@ -174,7 +173,7 @@ export default function Home() {
       <div className="border-t border-b border-white/[0.07] py-6 overflow-hidden">
         <p className="text-center text-sm uppercase tracking-[0.12em] text-[#5e567a] mb-5">Trusted by sustainability teams worldwide</p>
         <div className="animate-marquee flex gap-16 items-center whitespace-nowrap w-max">
-          {[...LOGOS,...LOGOS].map((l,i)=>(
+          {[...LOGOS, ...LOGOS].map((l, i) => (
             <span key={i} className="font-['Manrope'] font-bold text-[0.95rem] text-[#5e567a] opacity-60 shrink-0">{l}</span>
           ))}
         </div>
@@ -182,11 +181,11 @@ export default function Home() {
 
       {/* ── STATS ── */}
       <div className="py-20 px-[6%]">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatCard target={90}    suffix="%" label="Reduction in ESG reporting time with AI automation"/>
-          <StatCard target={20000} suffix="K+" label="Gallons of water saved through real-time monitoring"/>
-          <StatCard target={95}    suffix="%" label="Accuracy in leak & anomaly detection via AI sensors"/>
-          <StatCard target={12}    suffix="+" label="Global ESG frameworks supported out of the box"/>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StatCard target={90} suffix="%" label="Reduction in ESG reporting time with AI automation" />
+          <StatCard target={25000} suffix="+" label="Gallons of water saved through real-time monitoring" />
+          <StatCard target={95} suffix="%" label="Accuracy in leak, energy, carbon & water anomaly detection via AI sensors" />
+          <StatCard target={12} suffix="+" label="Global ESG frameworks supported out of the box" />
         </div>
       </div>
 
@@ -200,16 +199,14 @@ export default function Home() {
           </div>
 
           {/* Tab bar */}
-          <div className="flex bg-[#130f22] border border-white/[0.07] rounded-xl p-1.5 gap-1 mb-10">
-            {TABS.map((t,i)=>(
-              <button key={i} onClick={()=>setActiveTab(i)}
-                className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-[9px] text-sm font-medium transition-all ${
-                  activeTab===i ? "bg-[#221d3a] text-[#f0eeff]" : "text-[#5e567a] hover:text-[#a89dc8]"
-                }`}
+          <div className="flex flex-wrap justify-around bg-[#130f22] border border-white/[0.07] rounded-xl p-1.5 gap-y-3 mb-10">
+            {TABS.map((t, i) => (
+              <button key={i} onClick={() => setActiveTab(i)}
+                className={`text-lg flex items-center justify-center gap-2 px-4 py-2.5 rounded-[9px] font-medium transition-all ${activeTab === i ? "text-[#f0eeff]" : "text-[#5e567a] hover:text-[#a89dc8]"
+                  }`}
               >
-                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[0.7rem] font-bold border transition-all ${
-                  activeTab===i ? "bg-[#7c3aed] border-[#7c3aed] text-white" : "bg-[#1a1530] border-white/[0.07] text-[#5e567a]"
-                }`}>{i+1}</span>
+                <span className={`w-7 h-7 rounded-full flex items-center justify-center font-bold border transition-all ${activeTab === i ? "bg-[#7c3aed] border-[#7c3aed] text-white" : "bg-[#1a1530] border-white/[0.07] text-[#5e567a]"
+                  }`}>{i + 1}</span>
                 {t.label}
               </button>
             ))}
@@ -221,7 +218,7 @@ export default function Home() {
               <h3 className="font-['Manrope'] text-2xl font-bold tracking-tight text-[#f0eeff] mb-4">{TABS[activeTab].heading}</h3>
               <p className="text-lg text-[#a89dc8] leading-relaxed mb-6">{TABS[activeTab].body}</p>
               <ul className="space-y-3">
-                {TABS[activeTab].points.map((pt,i)=>(
+                {TABS[activeTab].points.map((pt, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-base text-[#a89dc8]">
                     <span className="mt-0.5 w-4.5 h-4.5 shrink-0 rounded-full bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 flex items-center justify-center text-[0.55rem] text-[#9d5cf6]">✓</span>
                     {pt}
@@ -229,13 +226,25 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <Image
-              src={TABS[activeTab].image}
-              alt={`${TABS[activeTab].label} in PlanetMatrix`}
-              width={720}
-              height={480}
-              className="w-full h-auto rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)]"
-            />
+            {/* border: 1px solid rgba(124,58,237,0.3)
+border-radius: 12px
+box-shadow: 0 0 40px rgba(124,58,237,0.15)
+overflow: hidden */}
+            <div className="rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)] overflow-hidden">
+            {activeTab === 3 ? (
+              <div className="w-full h-[400px] sm:h-[420px]">
+                <ReportDashboard />
+              </div>
+            ) : (
+              <Image
+                src={TABS[activeTab].image}
+                alt={`${TABS[activeTab].label} in PlanetMatrix`}
+                width={720}
+                height={480}
+                className="w-full h-auto rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)]"
+              />
+            )}
+            </div>
           </div>
         </div>
       </section>
@@ -245,9 +254,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Powerful Capabilities</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-lg">Everything you need to manage ESG at scale</h2>
-          <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">Eight capabilities, one platform, built for industries, farms, factories, and cities.</p>
+          <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">Eight capabilities, one platform, built for industries, farms, factories, and smart cities.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.07] rounded-2xl overflow-hidden">
-            {CAPS.map((c,i)=>(
+            {CAPS.map((c, i) => (
               <div key={i} className="bg-[#0e0b1a] hover:bg-[#130f22] transition-colors p-7">
                 <div className="text-2xl mb-4">{c.icon}</div>
                 <div className="font-['Manrope'] text-[0.85rem] font-bold text-[#f0eeff] uppercase tracking-wide mb-2">{c.title}</div>
@@ -265,12 +274,12 @@ export default function Home() {
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-lg">Your path to success</h2>
           <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">A clear path from onboarding to full compliance, automated at every step.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {PATH_STEPS.map((p,i)=>(
+            {PATH_STEPS.map((p, i) => (
               <div key={i} className="path-card-accent relative bg-[#130f22] border border-white/[0.07] rounded-2xl p-8 hover:border-[#7c3aed]/40 transition-colors overflow-hidden">
                 <p className="text-[0.7rem] uppercase tracking-[0.12em] text-[#b97bff] font-bold mb-3">{p.step}</p>
                 <p className="font-['Manrope'] text-lg font-bold text-[#f0eeff] mb-4">{p.title}</p>
                 <ul className="space-y-0">
-                  {p.items.map((it,j)=>(
+                  {p.items.map((it, j) => (
                     <li key={j} className="flex items-center gap-2 text-base text-[#a89dc8] py-1.5 border-b border-white/[0.04]">
                       <span className="text-[#b97bff] text-xs">→</span>{it}
                     </li>
@@ -289,7 +298,7 @@ export default function Home() {
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-xl">Automated compliance with the world&apos;s leading sustainability frameworks</h2>
           <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">Whatever your reporting obligations, PlanetMatrix makes them faster, easier, and audit-ready, for any framework.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.07] rounded-2xl overflow-hidden">
-            {FRAMEWORKS.map((f,i)=>(
+            {FRAMEWORKS.map((f, i) => (
               <div key={i} className="bg-[#0e0b1a] hover:bg-[#130f22] border-l-2 border-l-transparent hover:border-l-[#7c3aed] transition-all p-6 flex flex-col gap-2">
                 <span className="font-['Manrope'] text-lg font-extrabold text-[#f0eeff] tracking-tight">{f.abbr}</span>
                 <span className="text-[0.78rem] text-[#a89dc8] leading-snug">{f.name}</span>
@@ -305,7 +314,7 @@ export default function Home() {
           <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Data. Insight. Impact.</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-12 max-w-2xl mx-auto">Helping organizations build a more sustainable future.</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-            {PILLARS.map((p,i)=>(
+            {PILLARS.map((p, i) => (
               <div key={i} className="bg-[#130f22] border border-white/[0.07] rounded-2xl p-8 text-center hover:border-[#7c3aed]/40 hover:-translate-y-1 transition-all duration-300">
                 <div className="text-3xl mb-4">{p.icon}</div>
                 <div className="font-['Manrope'] text-[0.85rem] font-bold text-[#b97bff] uppercase tracking-widest mb-2">{p.title}</div>
@@ -345,7 +354,7 @@ export default function Home() {
             <p className="text-lg text-[#a89dc8] leading-relaxed mb-5">PlanetMatrix helps you simplify ESG compliance and get more from your sustainability data.</p>
             <p className="text-base text-[#5e567a] font-medium mb-4">Together on the call we will:</p>
             <ul className="space-y-3">
-              {["Discuss your ESG challenges and sustainability goals","Demo the software and our AI capabilities live","Explore integration with your existing infrastructure","Discover if PlanetMatrix is the right partner for you"].map((b,i)=>(
+              {["Discuss your ESG challenges and sustainability goals", "Demo the software and our AI capabilities live", "Explore integration with your existing infrastructure", "Discover if PlanetMatrix is the right partner for you"].map((b, i) => (
                 <li key={i} className="flex items-start gap-2.5 text-base text-[#a89dc8]">
                   <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 flex items-center justify-center text-[0.55rem] text-[#9d5cf6]">✓</span>{b}
                 </li>
@@ -356,27 +365,27 @@ export default function Home() {
             {!submitted ? (
               <div className="flex flex-col gap-3.5">
                 <div className="grid grid-cols-2 gap-3.5">
-                  <Field label="First Name *" type="text" placeholder="Sarah"/>
-                  <Field label="Last Name *"  type="text" placeholder="Johnson"/>
+                  <Field label="First Name *" type="text" placeholder="Sarah" />
+                  <Field label="Last Name *" type="text" placeholder="Johnson" />
                 </div>
-                <Field label="Work Email *" type="email" placeholder="sarah@company.com"/>
+                <Field label="Work Email *" type="email" placeholder="sarah@company.com" />
                 <div className="grid grid-cols-2 gap-3.5">
-                  <Field label="Phone"      type="tel"  placeholder="+1 555 000 0000"/>
-                  <Field label="Job Title"  type="text" placeholder="Sustainability Lead"/>
+                  <Field label="Phone" type="tel" placeholder="+1 555 000 0000" />
+                  <Field label="Job Title" type="text" placeholder="Sustainability Lead" />
                 </div>
-                <Field label="Company Name *" type="text" placeholder="Your organization"/>
-                <SelectField label="Type of Company *" options={["Agriculture / Farming","Manufacturing / Factory","Real Estate / Property","Energy & Utilities","Financial Services","Government / Municipality","NGO / Non-Profit","Other"]}/>
-                <SelectField label="My top priority is" options={["ESG Reporting & Compliance","Carbon Accounting","Water Management","Energy Efficiency","Stakeholder Reporting"]}/>
+                <Field label="Company Name *" type="text" placeholder="Your organization" />
+                <SelectField label="Type of Company *" options={["Agriculture / Farming", "Manufacturing / Factory", "Real Estate / Property", "Energy & Utilities", "Financial Services", "Government / Municipality", "NGO / Non-Profit", "Other"]} />
+                <SelectField label="My top priority is" options={["ESG Reporting & Compliance", "Carbon Accounting", "Water Management", "Energy Efficiency", "Stakeholder Reporting"]} />
                 <div className="flex flex-col gap-1.5">
                   <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">Message</label>
                   <textarea placeholder="Tell us about your ESG or sustainability goals..." rows={3}
-                    className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-sm text-[#f0eeff] placeholder-[#5e567a] outline-none resize-y transition-all"/>
+                    className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-sm text-[#f0eeff] placeholder-[#5e567a] outline-none resize-y transition-all" />
                 </div>
                 <label className="flex items-start gap-2 text-[0.78rem] text-[#5e567a] cursor-pointer">
-                  <input type="checkbox" className="mt-0.5 accent-[#7c3aed]"/>
+                  <input type="checkbox" className="mt-0.5 accent-[#7c3aed]" />
                   I agree to receive industry insights and relevant updates from PlanetMatrix.
                 </label>
-                <button onClick={()=>setSubmitted(true)}
+                <button onClick={() => setSubmitted(true)}
                   className="w-full mt-1 bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-[0.95rem] rounded-lg py-3.5 transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)]">
                   Request a Demo →
                 </button>
@@ -403,14 +412,14 @@ export default function Home() {
             <p className="text-[0.8rem] text-[#b97bff] mt-2">www.planet-matrix.com</p>
           </div>
           {[
-            { h:"Platform", links:[["Capabilities","#solutions"],["How It Works","#how"],["Compliance","#compliance"],["Book a Demo","#demo"]] },
-            { h:"Company",  links:[["About","#about"],["Careers","#"],["Press","#"],["Contact","#"]] },
-            { h:"Legal",    links:[["Privacy Policy","#"],["Terms of Service","#"],["Cookie Policy","#"],["Data Processing","#"]] },
-          ].map(col=>(
+            { h: "Platform", links: [["Capabilities", "#solutions"], ["How It Works", "#how"], ["Compliance", "#compliance"], ["Book a Demo", "#demo"]] },
+            { h: "Company", links: [["About", "#about"], ["Careers", "#"], ["Press", "#"], ["Contact", "#"]] },
+            { h: "Legal", links: [["Privacy Policy", "#"], ["Terms of Service", "#"], ["Cookie Policy", "#"], ["Data Processing", "#"]] },
+          ].map(col => (
             <div key={col.h}>
               <h4 className="text-sm uppercase tracking-[0.1em] text-[#5e567a] font-semibold mb-4">{col.h}</h4>
               <ul className="space-y-2">
-                {col.links.map(([label,href])=>(
+                {col.links.map(([label, href]) => (
                   <li key={label}><a href={href} className="text-[0.85rem] text-[#a89dc8] hover:text-[#b97bff] transition-colors">{label}</a></li>
                 ))}
               </ul>
@@ -420,7 +429,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto border-t border-white/[0.07] pt-6 flex items-center justify-between flex-wrap gap-4">
           <p className="text-[0.78rem] text-[#5e567a]">© 2026 PlanetMatrix. All rights reserved. | info@planet-matrix.com</p>
           <div className="flex gap-3">
-            {["in","𝕏","ig"].map((s,i)=>(
+            {["in", "𝕏", "ig"].map((s, i) => (
               <a key={i} href="#" className="w-8 h-8 rounded-lg bg-[#0e0b1a] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#b97bff] flex items-center justify-center text-[#5e567a] text-xs font-bold transition-all">{s}</a>
             ))}
           </div>
@@ -436,7 +445,7 @@ function Field({ label, type, placeholder }: { label: string; type: string; plac
     <div className="flex flex-col gap-1.5">
       <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
       <input type={type} placeholder={placeholder}
-        className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-sm text-[#f0eeff] placeholder-[#5e567a] outline-none transition-all"/>
+        className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-sm text-[#f0eeff] placeholder-[#5e567a] outline-none transition-all" />
     </div>
   );
 }
@@ -447,7 +456,7 @@ function SelectField({ label, options }: { label: string; options: string[] }) {
       <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
       <select className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 rounded-lg px-3.5 py-2.5 text-sm text-[#a89dc8] outline-none transition-all">
         <option value="">Please Select</option>
-        {options.map(o=><option key={o} className="bg-[#08060f]">{o}</option>)}
+        {options.map(o => <option key={o} className="bg-[#08060f]">{o}</option>)}
       </select>
     </div>
   );
