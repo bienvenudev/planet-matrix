@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import ReportDashboard from "@/components/ReportDashboard";
 import GeoDashboard from "@/components/GeoDashboard";
 import RiskDashboard from "@/components/RiskDashboard";
+import DataSourcesPanel from "@/components/DataSourcesPanel";
 
 const Logo = ({ size = 140 }: { size?: number }) => (
   <Image
@@ -62,18 +63,12 @@ const CAPS = [
 ];
 
 const FRAMEWORKS = [
-  { abbr: "GRI", name: "Global Reporting Initiative" },
-  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive" },
-  { abbr: "GHG", name: "Greenhouse Gas Protocol" },
-  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation" },
-  { abbr: "PCAF", name: "Partnership for Carbon Accounting Financials" },
-  { abbr: "TCFD", name: "Task Force on Climate Disclosures" },
-  { abbr: "ISO 14001", name: "Environmental Management Systems" },
-  { abbr: "ESRS", name: "European Sustainability Reporting Standards" },
-  { abbr: "CDP", name: "Carbon Disclosure Project" },
-  { abbr: "SDGs", name: "UN Sustainable Development Goals" },
-  { abbr: "VSME", name: "Voluntary SME Standard" },
-  { abbr: "SASB", name: "Sustainability Accounting Standards Board" },
+  { abbr: "GRI",  name: "Global Reporting Initiative",                logo: "" },
+  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive",logo: "" },
+  { abbr: "GHG",  name: "Greenhouse Gas Protocol",                    logo: "" },
+  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation",   logo: "" },
+  { abbr: "SDGs", name: "UN Sustainable Development Goals",            logo: "" },
+  { abbr: "ESRS", name: "European Sustainability Reporting Standards", logo: "" },
 ];
 
 const LOGOS = ["AgroVest Group", "ClimaFactory EU", "NexaEnergy Africa", "AquaFlow Industries", "GreenBuilds Co.", "EcoVentures MENA", "CarbonPath Ltd", "SustainCorp", "FarmTech Jordan"];
@@ -229,21 +224,23 @@ export default function Home() {
               </ul>
             </div>
             <div className="rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)] overflow-hidden">
-            {activeTab === 3 ? (
-              <ReportDashboard />
-            ) : activeTab === 2 ? (
-              <GeoDashboard />
-            ) : activeTab === 1 ? (
-              <RiskDashboard />
-            ) : (
-              <Image
-                src={TABS[activeTab].image}
-                alt={`${TABS[activeTab].label} in PlanetMatrix`}
-                width={720}
-                height={480}
-                className="w-full h-auto rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)]"
-              />
-            )}
+              {activeTab === 3 ? (
+                <ReportDashboard />
+              ) : activeTab === 2 ? (
+                <GeoDashboard />
+              ) : activeTab === 1 ? (
+                <RiskDashboard />
+              ) : activeTab === 0 ? (
+                <DataSourcesPanel />
+              ) : (
+                <Image
+                  src={TABS[activeTab].image}
+                  alt={`${TABS[activeTab].label} in PlanetMatrix`}
+                  width={720}
+                  height={480}
+                  className="w-full h-auto rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)]"
+                />
+              )}
             </div>
           </div>
         </div>
@@ -297,13 +294,34 @@ export default function Home() {
           <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Compliance Frameworks</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-xl">Automated compliance with the world&apos;s leading sustainability frameworks</h2>
           <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">Whatever your reporting obligations, PlanetMatrix makes them faster, easier, and audit-ready, for any framework.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.07] rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {FRAMEWORKS.map((f, i) => (
-              <div key={i} className="bg-[#0e0b1a] hover:bg-[#130f22] border-l-2 border-l-transparent hover:border-l-[#7c3aed] transition-all p-6 flex flex-col gap-2">
-                <span className="font-['Manrope'] text-lg font-extrabold text-[#f0eeff] tracking-tight">{f.abbr}</span>
-                <span className="text-[0.78rem] text-[#a89dc8] leading-snug">{f.name}</span>
+              <div key={i} className="flex flex-col items-center text-center p-8 bg-[#0e0b1a] border border-white/[0.07] rounded-2xl hover:border-[#7c3aed]/40 hover:-translate-y-1 transition-all duration-300 group">
+                {/* Logo placeholder — replace logo: "" with "/frameworks/gri.png" etc. when ready */}
+                <div className="w-28 h-28 rounded-2xl bg-[#130f22] border border-white/[0.07] group-hover:border-[#7c3aed]/30 flex items-center justify-center mb-6 transition-all overflow-hidden">
+                  {f.logo ? (
+                    <Image src={f.logo} alt={f.abbr} width={80} height={80} className="object-contain p-2" />
+                  ) : (
+                    <span className="font-['Manrope'] font-extrabold text-2xl text-[#9d5cf6]">{f.abbr}</span>
+                  )}
+                </div>
+                <p className="font-['Manrope'] text-lg font-extrabold text-[#f0eeff] tracking-tight mb-1">{f.abbr}</p>
+                <p className="text-base text-[#a89dc8] leading-snug">{f.name}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CERTIFICATIONS ── */}
+      <section className="py-20 px-[6%] border-t border-white/[0.07]">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mb-3">PlanetMatrix is certified and compliant.</h2>
+          <p className="text-lg text-[#a89dc8] mb-12">Enterprise-grade security, compliance, and auditability.</p>
+          <div className="flex items-center justify-center gap-16 flex-wrap">
+            <Image src="/iso.png" alt="ISO Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            <Image src="/isae.png" alt="ISAE Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            <Image src="/idw.png" alt="IDW Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
           </div>
         </div>
       </section>
