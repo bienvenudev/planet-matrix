@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import ReportDashboard from "@/components/ReportDashboard";
+import GeoDashboard from "@/components/GeoDashboard";
 
 const Logo = ({ size = 140 }: { size?: number }) => (
   <Image
@@ -226,15 +227,11 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            {/* border: 1px solid rgba(124,58,237,0.3)
-border-radius: 12px
-box-shadow: 0 0 40px rgba(124,58,237,0.15)
-overflow: hidden */}
             <div className="rounded-2xl border border-[#7c3aed]/10 shadow-[0_0_60px_rgba(124,58,237,0.08)] overflow-hidden">
             {activeTab === 3 ? (
-              <div className="w-full h-[400px] sm:h-[420px]">
-                <ReportDashboard />
-              </div>
+              <ReportDashboard />
+            ) : activeTab === 2 ? (
+              <GeoDashboard />
             ) : (
               <Image
                 src={TABS[activeTab].image}
