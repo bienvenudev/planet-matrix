@@ -9,9 +9,9 @@ const DONUT = [
 ];
 
 const LEGEND = [
-  { color: "var(--crd-s1)", nm: "Scope 1 · Direct", pct: "18%", v: "836" },
-  { color: "var(--crd-s2)", nm: "Scope 2 · Energy", pct: "27%", v: "1.254" },
-  { color: "var(--crd-s3)", nm: "Scope 3 · Value chain", pct: "55%", v: "2.553" },
+  { color: "var(--crd-s1)", nm: "Scope 1 · Direct",      v: "0.797" },
+  { color: "var(--crd-s2)", nm: "Scope 2 · Energy",      v: "1.196" },
+  { color: "var(--crd-s3)", nm: "Scope 3 · Value chain", v: "2.437" },
 ];
 
 const FRAMEWORKS = [
@@ -133,19 +133,18 @@ export default function ReportDashboard() {
                 })}
               </svg>
               <div className="crd-donut-center">
-                <span className="crd-total">4.643</span>
+                <span className="crd-total">4.43</span>
                 <span className="crd-unit">tCO₂e total</span>
                 <span className="crd-cap">↓ 11% YoY</span>
               </div>
             </div>
             <div className="crd-legend-rows">
               {LEGEND.map((l) => (
-                <div className="crd-lrow" key={l.nm}>
-                  <span className="crd-dot" style={{ background: l.color }} />
-                  <span className="crd-nm">{l.nm}</span>
-                  <span className="crd-pct">{l.pct}</span>
-                  <span className="crd-v">{l.v}</span>
-                </div>
+                 <div className="crd-lrow" key={l.nm}>
+                   <span className="crd-dot" style={{ background: l.color }} />
+                   <span className="crd-nm">{l.nm}</span>
+                   <span className="crd-v">{l.v}</span>
+                 </div>
               ))}
             </div>
           </div>
@@ -159,7 +158,7 @@ export default function ReportDashboard() {
           </div>
           <div className="crd-area-body">
             <div className="crd-area-top">
-              <span className="crd-big">4.643</span>
+              <span className="crd-big">4.43</span>
               <span className="crd-dl">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                 11% YoY

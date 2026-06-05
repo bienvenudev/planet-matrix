@@ -23,8 +23,8 @@ const TABS = [
   {
     label: "Collect",
     heading: "Build a trusted data foundation for growth",
-    body: "Connect IoT sensors, meters, and data streams from water systems, energy grids, and climate instruments into one central platform, automating Scope 1, 2, and 3 data collection and calculations.",
-    points: ["Reflect your organizational structure directly in PlanetMatrix", "Unite internal data sources and your external value chain", "Create custom metrics that aggregate any data from any source", "Save up to 90% of water, energy, and Scope 1-3 emissions reporting time"],
+    body: "Collect real-time data from IoT devices for water systems, energy grids, carbon, and climate instruments into one central platform to enable multi-party, automated tracking, calculation, and reporting for Scope 1, 2, and 3 data.",
+    points: ["Reflect your organizational structure directly in PlanetMatrix", "Unite internal data sources and your external value chain", "Create custom metrics that aggregate any data from any source", "Share results with stakeholders in one click"],
     image: "/tab-collect.png",
   },
   {
@@ -72,7 +72,7 @@ const FRAMEWORKS = [
   { abbr: "ESRS", name: "European Sustainability Reporting Standards", logo: "/frameworks/esrs.png" },
 ];
 
-const LOGOS = ["AgroVest Group", "ClimaFactory EU", "NexaEnergy Africa", "AquaFlow Industries", "GreenBuilds Co.", "EcoVentures MENA", "CarbonPath Ltd", "SustainCorp", "FarmTech Jordan"];
+const LOGOS = ["SUEZ", "Thames Water", "Siemens", "AWS", "Schneider Electric", "EIT", "Climate-KIC", "EIC", "JV", "LCL", "CSRD", "GIZ", "German Water Partnership", "ClimatePartner Gmbh", "Groupe ADP", "Carbon Clean", "World Bank"];
 
 const PATH_STEPS = [
   { step: "Step 01", title: "Get Started", items: ["Double materiality assessment", "Carbon accounting setup", "External data collection", "Benchmarks & simulations"] },
@@ -167,7 +167,7 @@ export default function Home() {
 
       {/* ── LOGO STRIP ── */}
       <div className="border-t border-b border-white/[0.07] py-6 overflow-hidden">
-        <p className="text-center text-sm uppercase tracking-[0.12em] text-[#5e567a] mb-5">Trusted by sustainability teams worldwide</p>
+        <p className="text-center text-sm uppercase tracking-[0.12em] text-[#5e567a] mb-5">Trusted by sustainability partners worldwide</p>
         <div className="animate-marquee flex gap-16 items-center whitespace-nowrap w-max">
           {[...LOGOS, ...LOGOS].map((l, i) => (
             <span key={i} className="font-['Manrope'] font-bold text-[0.95rem] text-[#5e567a] opacity-60 shrink-0">{l}</span>
@@ -178,10 +178,27 @@ export default function Home() {
       {/* ── STATS ── */}
       <div className="py-20 px-[6%]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatCard target={90} suffix="%" label="Reduction in ESG reporting time with AI automation" />
-          <StatCard target={25000} suffix="+" label="Gallons of water saved through real-time monitoring" />
-          <StatCard target={95} suffix="%" label="Accuracy in leak, energy, carbon & water anomaly detection via AI sensors" />
-          <StatCard target={12} suffix="+" label="Global ESG frameworks supported out of the box" />
+          <StatCard target={25} suffix="%" label="Saving in water consumption" />
+          <StatCard target={20} suffix="%" label="Lowering in energy cost" />
+          <StatCard target={10000000} suffix="" label="Tonnes reduction in carbon emissions" />
+          <StatCard target={95} suffix="%" label="Accuracy in water, energy, & carbon detection using AI, IoT and digital twin" />
+        </div>
+      </div>
+
+      {/* ── INTELLIGENCE CALLOUT ── */}
+      <div className="px-[6%] pb-10">
+        <div className="max-w-7xl mx-auto bg-[#130f22] border border-[#7c3aed]/20 rounded-2xl px-10 py-10 flex flex-col md:flex-row items-center gap-8">
+          <div className="shrink-0 text-center">
+            <p className="font-['Manrope'] font-extrabold text-[3.2rem] leading-none text-[#9d5cf6]">250×</p>
+            <p className="text-base text-[#b97bff] font-semibold mt-1 whitespace-nowrap">per second</p>
+          </div>
+          <div className="hidden md:block w-px self-stretch bg-white/[0.07] shrink-0" />
+          <p className="text-lg text-[#a89dc8] leading-relaxed">
+            Our intelligence layer processes data{" "}
+            <span className="text-[#f0eeff] font-semibold">250 times per second</span>,
+            detecting anomalies and inefficiencies invisible to manual inspection;
+            this gives your team the insight to act before problems become costly.
+          </p>
         </div>
       </div>
 
