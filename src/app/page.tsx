@@ -63,12 +63,12 @@ const CAPS = [
 ];
 
 const FRAMEWORKS = [
-  { abbr: "GRI",  name: "Global Reporting Initiative",                logo: "" },
-  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive",logo: "" },
-  { abbr: "GHG",  name: "Greenhouse Gas Protocol",                    logo: "" },
-  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation",   logo: "" },
-  { abbr: "SDGs", name: "UN Sustainable Development Goals",            logo: "" },
-  { abbr: "ESRS", name: "European Sustainability Reporting Standards", logo: "" },
+  { abbr: "GRI",  name: "Global Reporting Initiative",                logo: "/frameworks/gri.png" },
+  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive",logo: "/frameworks/csrd.png" },
+  { abbr: "GHG",  name: "Greenhouse Gas Protocol",                    logo: "/frameworks/ghg.png" },
+  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation",   logo: "/frameworks/sfdr.png" },
+  { abbr: "SDGs", name: "UN Sustainable Development Goals",            logo: "/frameworks/sdgs.png" },
+  { abbr: "ESRS", name: "European Sustainability Reporting Standards", logo: "/frameworks/esrs.png" },
 ];
 
 const LOGOS = ["AgroVest Group", "ClimaFactory EU", "NexaEnergy Africa", "AquaFlow Industries", "GreenBuilds Co.", "EcoVentures MENA", "CarbonPath Ltd", "SustainCorp", "FarmTech Jordan"];
@@ -294,21 +294,22 @@ export default function Home() {
           <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Compliance Frameworks</span>
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-3 max-w-xl">Automated compliance with the world&apos;s leading sustainability frameworks</h2>
           <p className="text-lg text-[#a89dc8] max-w-md leading-relaxed mb-12">Whatever your reporting obligations, PlanetMatrix makes them faster, easier, and audit-ready, for any framework.</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {FRAMEWORKS.map((f, i) => (
-              <div key={i} className="flex flex-col items-center text-center p-8 bg-[#0e0b1a] border border-white/[0.07] rounded-2xl hover:border-[#7c3aed]/40 hover:-translate-y-1 transition-all duration-300 group">
-                {/* Logo placeholder — replace logo: "" with "/frameworks/gri.png" etc. when ready */}
-                <div className="w-28 h-28 rounded-2xl bg-[#130f22] border border-white/[0.07] group-hover:border-[#7c3aed]/30 flex items-center justify-center mb-6 transition-all overflow-hidden">
+          <div className="rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.07]">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-px">
+              {FRAMEWORKS.map((f, i) => (
+                <div key={i} className="bg-[#0e0b1a] flex flex-col items-center text-center py-12 px-6 transition-colors">
                   {f.logo ? (
-                    <Image src={f.logo} alt={f.abbr} width={80} height={80} className="object-contain p-2" />
+                    <Image src={f.logo} alt={f.abbr} width={160} height={160} className="object-contain mb-7" style={{ width: 160, height: 160 }} />
                   ) : (
-                    <span className="font-['Manrope'] font-extrabold text-2xl text-[#9d5cf6]">{f.abbr}</span>
+                    <div className="w-40 h-40 flex items-center justify-center mb-7">
+                      <span className="font-['Manrope'] font-extrabold text-4xl text-[#9d5cf6]">{f.abbr}</span>
+                    </div>
                   )}
+                  <p className="font-['Manrope'] text-lg font-extrabold text-[#f0eeff] tracking-tight mb-1">{f.abbr}</p>
+                  <p className="text-base text-[#a89dc8] leading-snug">{f.name}</p>
                 </div>
-                <p className="font-['Manrope'] text-lg font-extrabold text-[#f0eeff] tracking-tight mb-1">{f.abbr}</p>
-                <p className="text-base text-[#a89dc8] leading-snug">{f.name}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
