@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import ReportDashboard from "@/components/ReportDashboard";
 import GeoDashboard from "@/components/GeoDashboard";
@@ -126,24 +127,22 @@ function StatCard({ target, suffix, label }: { target: number; suffix: string; l
 /* ─── Page ──────────────────────────────────────────────── */
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   return (
     <>
       {/* ── NAV ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[6%] h-[66px] bg-[#08060f]/90 backdrop-blur-xl border-b border-white/[0.07]">
-        <div className="flex items-center gap-2.5 font-['Manrope'] text-lg font-extrabold tracking-tight">
-          <Logo />
-          {/* <span className="text-[#f0eeff]">Planet</span><span className="text-[#9d5cf6]">Matrix</span> */}
-        </div>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[6%] h-[72px] bg-[#08060f]/90 backdrop-blur-xl border-b border-white/[0.07]">
+        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+          <Logo size={128} />
+        </Link>
         <ul className="hidden md:flex items-center gap-8 list-none">
           {["Solutions", "How It Works", "Compliance", "About"].map((l, i) => (
-            <li key={l}><a href={["#solutions", "#how", "#compliance", "#about"][i]} className="text-sm text-[#a89dc8] hover:text-[#f0eeff] transition-colors">{l}</a></li>
+            <li key={l}><a href={["#solutions", "#how", "#compliance", "#about"][i]} className="text-base text-[#a89dc8] hover:text-[#f0eeff] transition-colors">{l}</a></li>
           ))}
         </ul>
         <div className="flex items-center gap-3">
-          <button className="text-sm font-medium text-[#a89dc8] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#f0eeff] rounded-lg px-4 py-2 bg-transparent transition-all">Log In</button>
-          <button onClick={() => scrollTo("demo")} className="text-sm font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book a demo</button>
+          <button className="text-base font-medium text-[#a89dc8] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#f0eeff] rounded-lg px-4 py-2 bg-transparent transition-all">Log In</button>
+          <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book a demo</Link>
         </div>
       </nav>
 
@@ -160,7 +159,7 @@ export default function Home() {
             Manage all your ESG needs on one platform, automate your reporting, and get a complete view of sustainability performance across industries, farms, factories, and smart cities worldwide.
           </p>
           <div className="animate-fade-up-4 flex gap-4 flex-wrap justify-center">
-            <button onClick={() => scrollTo("demo")} className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-9 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book a demo</button>
+            <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-9 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book a demo</Link>
             <button onClick={() => scrollTo("how")} className="text-base font-medium text-[#f0eeff] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#b97bff] rounded-xl px-9 py-3.5 bg-transparent transition-all">See how it works</button>
           </div>
         </div>
@@ -364,59 +363,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BOOK DEMO ── */}
-      <section id="demo" className="py-28 px-[6%] border-t border-white/[0.07]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-          <div>
-            <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Book a Demo</span>
-            <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mt-2 mb-4">Simplify compliance. Improve performance.</h2>
-            <p className="text-lg text-[#a89dc8] leading-relaxed mb-5">PlanetMatrix helps you simplify ESG compliance and get more from your sustainability data.</p>
-            <p className="text-base text-[#5e567a] font-medium mb-4">Together on the call we will:</p>
-            <ul className="space-y-3">
-              {["Discuss your ESG challenges and sustainability goals", "Demo the software and our AI capabilities live", "Explore integration with your existing infrastructure", "Discover if PlanetMatrix is the right partner for you"].map((b, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-base text-[#a89dc8]">
-                  <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 flex items-center justify-center text-[0.55rem] text-[#9d5cf6]">✓</span>{b}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            {!submitted ? (
-              <div className="flex flex-col gap-3.5">
-                <div className="grid grid-cols-2 gap-3.5">
-                  <Field label="First Name *" type="text" placeholder="Sarah" />
-                  <Field label="Last Name *" type="text" placeholder="Johnson" />
-                </div>
-                <Field label="Work Email *" type="email" placeholder="sarah@company.com" />
-                <div className="grid grid-cols-2 gap-3.5">
-                  <Field label="Phone" type="tel" placeholder="+1 555 000 0000" />
-                  <Field label="Job Title" type="text" placeholder="Sustainability Lead" />
-                </div>
-                <Field label="Company Name *" type="text" placeholder="Your organization" />
-                <SelectField label="Type of Company *" options={["Agriculture / Farming", "Manufacturing / Factory", "Real Estate / Property", "Energy & Utilities", "Financial Services", "Government / Municipality", "NGO / Non-Profit", "Other"]} />
-                <SelectField label="My top priority is" options={["ESG Reporting & Compliance", "Carbon Accounting", "Water Management", "Energy Efficiency", "Stakeholder Reporting"]} />
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">Message</label>
-                  <textarea placeholder="Tell us about your ESG or sustainability goals..." rows={3}
-                    className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-sm text-[#f0eeff] placeholder-[#5e567a] outline-none resize-y transition-all" />
-                </div>
-                <label className="flex items-start gap-2 text-[0.78rem] text-[#5e567a] cursor-pointer">
-                  <input type="checkbox" className="mt-0.5 accent-[#7c3aed]" />
-                  I agree to receive industry insights and relevant updates from PlanetMatrix.
-                </label>
-                <button onClick={() => setSubmitted(true)}
-                  className="w-full mt-1 bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-[0.95rem] rounded-lg py-3.5 transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)]">
-                  Request a Demo →
-                </button>
-                <p className="text-center text-sm text-[#5e567a]">No commitment required. We typically respond within 24 hours.</p>
-              </div>
-            ) : (
-              <div className="bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 rounded-2xl p-8 text-center">
-                <p className="font-['Manrope'] text-lg font-bold text-[#b97bff]">🌍 Thank you, we&apos;ve received your request!</p>
-                <p className="text-sm text-[#a89dc8] mt-2">A PlanetMatrix team member will be in touch within 24 hours.</p>
-              </div>
-            )}
-          </div>
+      {/* ── CTA ── */}
+      <section className="py-24 px-[6%] border-t border-white/[0.07]">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mb-4">Ready to simplify your ESG?</h2>
+          <p className="text-lg text-[#a89dc8] leading-relaxed mb-8">Schedule a demo and see how PlanetMatrix can transform your sustainability data into real impact.</p>
+          <Link href="/demo" className="inline-block text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-10 py-4 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book a Demo →</Link>
         </div>
       </section>
 
@@ -431,7 +383,7 @@ export default function Home() {
             <p className="text-[0.8rem] text-[#b97bff] mt-2">www.planet-matrix.com</p>
           </div>
           {[
-            { h: "Platform", links: [["Capabilities", "#solutions"], ["How It Works", "#how"], ["Compliance", "#compliance"], ["Book a Demo", "#demo"]] },
+            { h: "Platform", links: [["Capabilities", "#solutions"], ["How It Works", "#how"], ["Compliance", "#compliance"], ["Book a Demo", "/demo"]] },
             { h: "Company", links: [["About", "#about"], ["Careers", "#"], ["Press", "#"], ["Contact", "#"]] },
             { h: "Legal", links: [["Privacy Policy", "#"], ["Terms of Service", "#"], ["Cookie Policy", "#"], ["Data Processing", "#"]] },
           ].map(col => (
@@ -458,25 +410,3 @@ export default function Home() {
   );
 }
 
-/* ─── Reusable form atoms ───────────────────────────────── */
-function Field({ label, type, placeholder }: { label: string; type: string; placeholder: string }) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
-      <input type={type} placeholder={placeholder}
-        className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-sm text-[#f0eeff] placeholder-[#5e567a] outline-none transition-all" />
-    </div>
-  );
-}
-
-function SelectField({ label, options }: { label: string; options: string[] }) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
-      <select className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 rounded-lg px-3.5 py-2.5 text-sm text-[#a89dc8] outline-none transition-all">
-        <option value="">Please Select</option>
-        {options.map(o => <option key={o} className="bg-[#08060f]">{o}</option>)}
-      </select>
-    </div>
-  );
-}
