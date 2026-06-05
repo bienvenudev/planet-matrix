@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import ReportDashboard from "@/components/ReportDashboard";
 import GeoDashboard from "@/components/GeoDashboard";
+import RiskDashboard from "@/components/RiskDashboard";
 
 const Logo = ({ size = 140 }: { size?: number }) => (
   <Image
@@ -232,6 +233,8 @@ export default function Home() {
               <ReportDashboard />
             ) : activeTab === 2 ? (
               <GeoDashboard />
+            ) : activeTab === 1 ? (
+              <RiskDashboard />
             ) : (
               <Image
                 src={TABS[activeTab].image}
