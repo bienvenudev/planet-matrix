@@ -63,11 +63,11 @@ const CAPS = [
 ];
 
 const FRAMEWORKS = [
-  { abbr: "GRI",  name: "Global Reporting Initiative",                logo: "/frameworks/gri.png" },
-  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive",logo: "/frameworks/csrd.png" },
-  { abbr: "GHG",  name: "Greenhouse Gas Protocol",                    logo: "/frameworks/ghg.png" },
-  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation",   logo: "/frameworks/sfdr.png" },
-  { abbr: "SDGs", name: "UN Sustainable Development Goals",            logo: "/frameworks/sdgs.png" },
+  { abbr: "GRI", name: "Global Reporting Initiative", logo: "/frameworks/gri.png" },
+  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive", logo: "/frameworks/csrd.png" },
+  { abbr: "GHG", name: "Greenhouse Gas Protocol", logo: "/frameworks/ghg.png" },
+  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation", logo: "/frameworks/sfdr.png" },
+  { abbr: "SDGs", name: "UN Sustainable Development Goals", logo: "/frameworks/sdgs.png" },
   { abbr: "ESRS", name: "European Sustainability Reporting Standards", logo: "/frameworks/esrs.png" },
 ];
 
@@ -80,10 +80,10 @@ const PATH_STEPS = [
 ];
 
 const PILLARS = [
-  { icon: "🌱", title: "Drive Impact", desc: "Reduce emissions and create positive environmental impact across your operations and value chain." },
-  { icon: "🛡️", title: "Reduce Risk", desc: "Mitigate regulatory risks and ensure compliance with evolving international ESG standards." },
-  { icon: "⏱️", title: "Save Time & Costs", desc: "Automate your reporting and resource tracking. Cut weeks of work down to hours." },
-  { icon: "🤝", title: "Build Trust", desc: "Increase transparency and strengthen stakeholder trust with audit-ready, verifiable data." },
+  { icon: "/climate.png", title: "Drive Impact", desc: "Reduce emissions and create positive environmental impact across your operations and value chain." },
+  { icon: "/risk.png", title: "Reduce Risk", desc: "Mitigate regulatory risks and ensure compliance with evolving international ESG standards." },
+  { icon: "/time-cost.png", title: "Save Time & Costs", desc: "Automate your reporting and resource tracking. Cut weeks of work down to hours." },
+  { icon: "/trust.png", title: "Build Trust", desc: "Increase transparency and strengthen stakeholder trust with audit-ready, verifiable data." },
 ];
 
 /* ─── Counter hook ──────────────────────────────────────── */
@@ -335,7 +335,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             {PILLARS.map((p, i) => (
               <div key={i} className="bg-[#130f22] border border-white/[0.07] rounded-2xl p-8 text-center hover:border-[#7c3aed]/40 hover:-translate-y-1 transition-all duration-300">
-                <div className="text-3xl mb-4">{p.icon}</div>
+                <Image src={p.icon} alt={p.title} width={72} height={72} className="mb-5 mx-auto object-contain" />
                 <div className="font-['Manrope'] text-[0.85rem] font-bold text-[#b97bff] uppercase tracking-widest mb-2">{p.title}</div>
                 <div className="text-base text-[#a89dc8] leading-relaxed">{p.desc}</div>
               </div>
