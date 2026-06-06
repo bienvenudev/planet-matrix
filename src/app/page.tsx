@@ -401,8 +401,8 @@ export default function Home() {
           </div>
           {[
             { h: "Platform", links: [["Capabilities", "#solutions"], ["How It Works", "#how"], ["Compliance", "#compliance"], ["Book A Demo", "/demo"]] },
-            { h: "Company", links: [["About", "#about"], ["Careers", "#"], ["Press", "#"], ["Contact", "#"]] },
-            { h: "Legal", links: [["Privacy Policy", "#"], ["Terms of Service", "#"], ["Cookie Policy", "#"], ["Data Processing", "#"]] },
+            { h: "Company", links: [["About", "#about"], ["Careers", "/careers"], ["Press", "/press"], ["Contact", "/contact"]] },
+            { h: "Legal", links: [["Privacy Policy", "/privacy-policy"]] },
           ].map(col => (
             <div key={col.h}>
               <h4 className="text-sm uppercase tracking-[0.1em] text-[#5e567a] font-semibold mb-4">{col.h}</h4>
