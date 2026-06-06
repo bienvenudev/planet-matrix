@@ -73,7 +73,6 @@ export default function PrivacyPolicyPage() {
         <div className="relative z-10 max-w-3xl mx-auto">
           <span className="text-sm uppercase tracking-[0.1em] text-[#b97bff] font-semibold">Legal</span>
           <h1 className="font-['Manrope'] font-extrabold text-[clamp(2.2rem,5vw,3.4rem)] tracking-[-0.03em] text-[#f0eeff] mt-3 mb-4">Privacy Policy</h1>
-          <p className="text-base text-[#5e567a] font-medium">Effective Date: April 9, 2026</p>
         </div>
       </header>
 
