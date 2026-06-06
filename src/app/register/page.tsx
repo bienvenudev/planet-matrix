@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import AuthShowcase from "@/components/AuthShowcase";
 
 export default function RegisterPage() {
   const [form, setForm] = useState({ name: "", email: "", password: "", confirm: "" });
@@ -29,9 +30,10 @@ export default function RegisterPage() {
         </div>
       </nav>
 
-      {/* ── Card ── */}
-      <div className="flex-1 flex items-center justify-center px-4 py-16">
-        <div className="w-full max-w-[420px] flex flex-col gap-6">
+      {/* ── Split: form + live showcase ── */}
+      <div className="flex-1 flex">
+        <div className="flex-1 flex items-center justify-center px-4 py-16">
+          <div className="w-full max-w-[420px] flex flex-col gap-6">
 
           {/* Heading */}
           <div className="text-center">
@@ -91,7 +93,10 @@ export default function RegisterPage() {
             <Link href="/login" className="text-[#b97bff] font-semibold hover:underline">Sign in</Link>
           </p>
 
+          </div>
         </div>
+
+        <AuthShowcase />
       </div>
     </div>
   );
