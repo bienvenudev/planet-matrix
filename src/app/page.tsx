@@ -424,7 +424,7 @@ export default function Home() {
           <div className="flex gap-3">
             {[
               { href: "https://www.linkedin.com/company/planetmatrix", label: "LinkedIn", content: "in" },
-              // { href: "#", label: "X", content: "𝕏" },
+              { href: "#", label: "X", content: "𝕏" },
               {
                 href: "https://www.instagram.com/planetmatrix1",
                 label: "Instagram",
