@@ -129,7 +129,24 @@ export default function DemoPage() {
                 <Field label="Company Name *" type="text" name="company" placeholder="Your organization" required />
                 <Field label="Job Title" type="text" name="job_title" placeholder="Sustainability Lead" />
               </div>
-              <SelectField label="Type of Company *" name="company_type" required options={["Agriculture / Farming", "Manufacturing / Factory", "Real Estate / Property", "Energy & Utilities", "Financial Services", "Government / Municipality", "NGO / Non-Profit", "Other"]} />
+              <SelectField label="Type of Company *" name="company_type" required options={[
+                "Agriculture / Farming",
+                "Manufacturing / Factory",
+                "Water & Wastewater",
+                "Energy & Utilities",
+                "Real Estate / Property",
+                "Aviation / Airports",
+                "Hospitality / Hotels",
+                "Transport & Logistics",
+                "Financial Services / Banking",
+                "Government / Municipality",
+                "Smart Cities / Infrastructure",
+                "Technology / Software",
+                "Healthcare",
+                "Consulting",
+                "NGO / Non-Profit",
+                "Other",
+              ]} />
               <SelectField label="Country / Region *" name="country" required options={COUNTRIES} />
               <SelectField label="My top priority is" name="priority" options={["Collecting and managing data", "Finding a reporting solution", "Measuring carbon emissions", "Sharing ESG information with stakeholders", "Understanding performance/benchmarks", "Reporting sustainability driven outcomes", "Preparing to comply with regulation"]} />
               <div className="flex flex-col gap-1.5">

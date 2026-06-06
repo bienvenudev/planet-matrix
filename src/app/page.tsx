@@ -373,7 +373,7 @@ export default function Home() {
               <p className="text-xs text-[#5e567a]">Official website</p>
             </div>
             <div>
-              <p className="font-['Manrope'] font-bold text-[#a89dc8]">info@planet-matrix.com</p>
+              <a href="mailto:info@planet-matrix.com" className="font-['Manrope'] font-bold text-[#a89dc8] hover:text-[#b97bff] transition-colors">info@planet-matrix.com</a>
               <p className="text-xs text-[#5e567a]">Get in touch</p>
             </div>
           </div>
@@ -420,10 +420,10 @@ export default function Home() {
           ))}
         </div>
         <div className="max-w-7xl mx-auto border-t border-white/[0.07] pt-6 flex items-center justify-between flex-wrap gap-4">
-          <p className="text-[0.78rem] text-[#5e567a]">© 2026 PlanetMatrix. All rights reserved. | info@planet-matrix.com</p>
+          <p className="text-[0.78rem] text-[#5e567a]">© 2026 PlanetMatrix. All rights reserved.</p>
           <div className="flex gap-3">
             {[
-              { href: "info@planet-matrix.com", label: "LinkedIn", content: "In" },
+              { href: "https://www.linkedin.com/company/planetmatrix", label: "LinkedIn", content: "in" },
               // { href: "#", label: "X", content: "𝕏" },
               {
                 href: "https://www.instagram.com/planetmatrix1",
@@ -433,6 +433,16 @@ export default function Home() {
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                ),
+              },
+              {
+                href: "mailto:info@planet-matrix.com",
+                label: "Email",
+                content: (
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="M2 7l10 7 10-7" />
                   </svg>
                 ),
               },
