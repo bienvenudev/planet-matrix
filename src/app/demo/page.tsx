@@ -95,7 +95,7 @@ export default function DemoPage() {
               </label>
               <p className="text-base text-[#5e567a] leading-relaxed">
                 By clicking the button below, you consent to allow PlanetMatrix to store and process the personal information submitted above subject to {" "}
-                <a href="#" className="text-[#b97bff] hover:underline">Privacy Policy</a>.
+                <Link href="/privacy-policy" className="text-[#b97bff] hover:underline">Privacy Policy</Link>.
               </p>
               <button onClick={() => setSubmitted(true)}
                 className="w-full bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-base rounded-lg py-4 transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)] uppercase tracking-widest mt-1">
