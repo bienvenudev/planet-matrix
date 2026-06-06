@@ -56,7 +56,7 @@ export default function PressPage() {
             <p className="text-lg text-[#a89dc8] leading-relaxed max-w-lg mb-8">
               Press releases, media coverage, and resources about PlanetMatrix. For interviews, assets, or media enquiries, reach our team directly.
             </p>
-            <a href="mailto:press@planet-matrix.com" className="inline-block bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-base rounded-lg px-6 py-3.5 transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)] uppercase tracking-widest">
+            <a href="mailto:info@planet-matrix.com" className="inline-block bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-base rounded-lg px-6 py-3.5 transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)] uppercase tracking-widest">
               Contact Press Team →
             </a>
           </div>
@@ -105,8 +105,8 @@ export default function PressPage() {
             <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.4rem,2.5vw,2rem)] tracking-[-0.02em] mb-2">Media enquiries</h2>
             <p className="text-base text-[#a89dc8] max-w-xl">For logos, brand assets, executive bios, or interview requests, get in touch and we&apos;ll respond promptly.</p>
           </div>
-          <a href="mailto:press@planet-matrix.com" className="shrink-0 bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-base rounded-lg px-6 py-3.5 transition-all hover:-translate-y-px uppercase tracking-widest text-center">
-            press@planet-matrix.com
+          <a href="mailto:info@planet-matrix.com" className="shrink-0 bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-base rounded-lg px-6 py-3.5 transition-all hover:-translate-y-px uppercase tracking-widest text-center">
+            info@planet-matrix.com
           </a>
         </div>
       </section>

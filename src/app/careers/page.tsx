@@ -102,7 +102,7 @@ export default function CareersPage() {
       <section id="openings" className="px-[6%] py-16">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.6rem,3vw,2.4rem)] tracking-[-0.02em] mb-3">Open positions</h2>
-          <p className="text-lg text-[#a89dc8] max-w-2xl mb-10">Don&apos;t see a perfect fit? We&apos;re always happy to hear from great people. Reach out at <a href="mailto:careers@planet-matrix.com" className="text-[#b97bff] hover:underline">careers@planet-matrix.com</a>.</p>
+          <p className="text-lg text-[#a89dc8] max-w-2xl mb-10">Don&apos;t see a perfect fit? We&apos;re always happy to hear from great people. Reach out at <a href="mailto:info@planet-matrix.com" className="text-[#b97bff] hover:underline">info@planet-matrix.com</a>.</p>
           <div className="flex flex-col gap-4">
             {ROLES.map(r => (
               <div key={r.title} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-white/[0.07] bg-[#0e0b1a] p-6 transition-all duration-300 hover:border-[#7c3aed]/40">
@@ -110,7 +110,7 @@ export default function CareersPage() {
                   <h3 className="font-['Manrope'] font-bold text-lg mb-1">{r.title}</h3>
                   <p className="text-base text-[#5e567a]">{r.team} · {r.location} · {r.type}</p>
                 </div>
-                <a href={`mailto:careers@planet-matrix.com?subject=Application: ${r.title}`} className="shrink-0 text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-5 py-2.5 transition-all hover:-translate-y-px text-center">
+                <a href={`mailto:info@planet-matrix.com?subject=Application: ${r.title}`} className="shrink-0 text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-5 py-2.5 transition-all hover:-translate-y-px text-center">
                   Apply →
                 </a>
               </div>

@@ -25,7 +25,7 @@ const UL = ({ children }: { children: React.ReactNode }) => (
 const OL = ({ children }: { children: React.ReactNode }) => (
   <ol className="list-decimal pl-6 space-y-2 text-[#a89dc8] leading-relaxed mb-5 marker:text-[#9d5cf6] marker:font-semibold">{children}</ol>
 );
-const Mail = () => <a href="mailto:privacy@planet-matrix.com" className="text-[#b97bff] hover:underline">privacy@planet-matrix.com</a>;
+const Mail = () => <a href="mailto:info@planet-matrix.com" className="text-[#b97bff] hover:underline">info@planet-matrix.com</a>;
 
 const LEGAL_BASES: [string, string][] = [
   ["Provide you with our Subscription Service", "Performance of a Contract"],
