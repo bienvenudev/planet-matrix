@@ -66,12 +66,12 @@ const CAPS = [
 ];
 
 const FRAMEWORKS = [
-  { abbr: "GRI", name: "Global Reporting Initiative", logo: "/frameworks/gri.png" },
-  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive", logo: "/frameworks/csrd.png" },
-  { abbr: "GHG", name: "Greenhouse Gas Protocol", logo: "/frameworks/ghg.png" },
-  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation", logo: "/frameworks/sfdr.png" },
-  { abbr: "SDGs", name: "UN Sustainable Development Goals", logo: "/frameworks/sdgs.png" },
-  { abbr: "ESRS", name: "European Sustainability Reporting Standards", logo: "/frameworks/esrs.png" },
+  { abbr: "GRI", name: "Global Reporting Initiative", logo: "/frameworks/mono/gri.png" },
+  { abbr: "CSRD", name: "Corporate Sustainability Reporting Directive", logo: "/frameworks/mono/csrd.png" },
+  { abbr: "GHG", name: "Greenhouse Gas Protocol", logo: "/frameworks/mono/ghg.png" },
+  { abbr: "SFDR", name: "Sustainable Finance Disclosure Regulation", logo: "/frameworks/mono/sfdr.png" },
+  { abbr: "SDGs", name: "UN Sustainable Development Goals", logo: "/frameworks/mono/sdgs.png" },
+  { abbr: "ESRS", name: "European Sustainability Reporting Standards", logo: "/frameworks/mono/esrs.png" },
 ];
 
 const LOGOS = ["SUEZ", "Thames Water", "Siemens", "AWS", "Schneider Electric", "EIT", "Climate-KIC", "EIC", "JV", "LCL", "CSRD", "GIZ", "German Water Partnership", "ClimatePartner Gmbh", "Groupe ADP", "Carbon Clean", "World Bank"];
@@ -316,14 +316,7 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-px">
               {FRAMEWORKS.map((f, i) => (
                 <div key={i} className="bg-[#0e0b1a] flex flex-col items-center text-center py-12 px-6 transition-colors">
-                  {f.logo ? (
-                    <Image src={f.logo} alt={f.abbr} width={160} height={160} className="object-contain mb-7" style={{ width: 160, height: 160 }} />
-                  ) : (
-                    <div className="w-40 h-40 flex items-center justify-center mb-7">
-                      <span className="font-['Manrope'] font-extrabold text-4xl text-[#9d5cf6]">{f.abbr}</span>
-                    </div>
-                  )}
-                  <p className="font-['Manrope'] text-lg font-extrabold text-[#f0eeff] tracking-tight mb-1">{f.abbr}</p>
+                  <Image src={f.logo} alt={f.abbr} width={104} height={104} className="object-contain mb-6 opacity-90" style={{ width: 104, height: 104 }} />
                   <p className="text-base text-[#a89dc8] leading-snug">{f.name}</p>
                 </div>
               ))}
@@ -339,7 +332,7 @@ export default function Home() {
           <p className="text-lg text-[#a89dc8] mb-12">Enterprise-grade security, compliance, and auditability.</p>
           <div className="flex items-center justify-center gap-16 flex-wrap">
             <Image src="/iso.png" alt="ISO Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
-            <Image src="/label-bas-carbone.png" alt="Label Bas Carbone Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            <Image src="/label-bas-carbone-light.png" alt="Label Bas Carbone Certified" width={150} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
             <Image src="/idw.png" alt="IDW Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
           </div>
         </div>
