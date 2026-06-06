@@ -2,16 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
-import emailjs from "@emailjs/browser";
-
-// EmailJS config. The public key is designed to be exposed client-side.
-// Sends the "Demo Request" template; the Auto-Reply template is linked inside
-// it on the EmailJS dashboard, so the submitter is notified automatically.
-const EMAILJS = {
-  serviceId: "service_th83hkp",
-  templateId: "template_mb4ytqp",
-  publicKey: "MTnyHpw0XOom3zGwA",
-};
 
 const COUNTRIES = [
   "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
@@ -44,14 +34,37 @@ export default function DemoPage() {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formRef.current || status === "sending") return;
     setStatus("sending");
-    emailjs
-      .sendForm(EMAILJS.serviceId, EMAILJS.templateId, formRef.current, { publicKey: EMAILJS.publicKey })
-      .then(() => setStatus("success"))
-      .catch(() => setStatus("error"));
+
+    const fd = new FormData(formRef.current);
+    const payload = {
+      firstName: fd.get("first_name"),
+      lastName: fd.get("last_name"),
+      email: fd.get("email"),
+      phone: fd.get("phone"),
+      jobTitle: fd.get("job_title"),
+      company: fd.get("company"),
+      companyType: fd.get("company_type"),
+      country: fd.get("country"),
+      priority: fd.get("priority"),
+      message: fd.get("message"),
+      optIn: fd.get("opt_in") ? "Yes" : "No",
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
