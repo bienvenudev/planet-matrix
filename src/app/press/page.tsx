@@ -114,7 +114,7 @@ export default function PressPage() {
       {/* ── Footer ── */}
       <footer className="bg-[#08060f] border-t border-white/[0.07] px-[6%] py-10">
         <div className="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-4">
-          <p className="text-[0.78rem] text-[#5e567a]">© 2026 PlanetMatrix. All rights reserved. | info@planet-matrix.com</p>
+          <p className="text-[0.78rem] text-[#5e567a]">© 2026 PlanetMatrix. All rights reserved.</p>
           <Link href="/" className="text-base text-[#b97bff] hover:underline">← Back to home</Link>
         </div>
       </footer>
