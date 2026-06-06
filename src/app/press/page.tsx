@@ -32,7 +32,7 @@ export default function PressPage() {
       {/* ── Nav ── */}
       <nav className="flex items-center justify-between px-[6%] h-[72px] border-b border-white/[0.07]">
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <Image src="/planet-matrix-logo.jpeg" alt="PlanetMatrix" width={128} height={64} className="rounded-full object-cover" priority />
+          <Image src="/PlanetMatrix-Logo-light.png" alt="PlanetMatrix" width={1346} height={265} className="h-6 sm:h-7 md:h-8 w-auto" priority />
         </Link>
         <div className="flex items-center gap-3">
           <Link href="/" className="text-base font-medium text-[#a89dc8] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#f0eeff] rounded-lg px-4 py-2 transition-all">← Home</Link>

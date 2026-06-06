@@ -7,13 +7,15 @@ import GeoDashboard from "@/components/GeoDashboard";
 import RiskDashboard from "@/components/RiskDashboard";
 import DataSourcesPanel from "@/components/DataSourcesPanel";
 
-const Logo = ({ size = 140 }: { size?: number }) => (
+// Wide wordmark (1346×265). Control the rendered size with a height class
+// (`w-auto` keeps the aspect ratio); never crop it into a circle.
+const Logo = ({ className = "h-8 w-auto" }: { className?: string }) => (
   <Image
-    src="/planet-matrix-logo.jpeg"
+    src="/PlanetMatrix-Logo-light.png"
     alt="PlanetMatrix logo"
-    width={size}
-    height={size}
-    className="rounded-full object-cover shrink-0"
+    width={1346}
+    height={265}
+    className={`shrink-0 ${className}`}
     priority
   />
 );
@@ -133,7 +135,7 @@ export default function Home() {
       {/* ── NAV ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[6%] h-[72px] bg-[#08060f]/90 backdrop-blur-xl border-b border-white/[0.07]">
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <Logo size={128} />
+          <Logo className="h-6 sm:h-7 md:h-8 w-auto" />
         </Link>
         <ul className="hidden md:flex items-center gap-8 list-none">
           {["Solutions", "How It Works", "Compliance", "About"].map((l, i) => (
@@ -394,7 +396,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 font-['Manrope'] text-lg font-extrabold tracking-tight mb-3">
-              <Logo size={128} />
+              <Logo className="h-9 w-auto" />
             </div>
             <p className="text-[0.85rem] text-[#5e567a] leading-relaxed max-w-[220px]">One Platform. All Your ESG. Infinite Impact.</p>
             <p className="text-[0.8rem] text-[#b97bff] mt-2">www.planet-matrix.com</p>
