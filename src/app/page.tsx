@@ -339,7 +339,7 @@ export default function Home() {
           <p className="text-lg text-[#a89dc8] mb-12">Enterprise-grade security, compliance, and auditability.</p>
           <div className="flex items-center justify-center gap-16 flex-wrap">
             <Image src="/iso.png" alt="ISO Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
-            <Image src="/isae.png" alt="ISAE Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            <Image src="/label-bas-carbone.png" alt="Label Bas Carbone Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
             <Image src="/idw.png" alt="IDW Certified" width={110} height={110} className="object-contain opacity-90 hover:opacity-100 transition-opacity" />
           </div>
         </div>
