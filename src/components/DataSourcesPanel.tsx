@@ -50,19 +50,19 @@ const ROWS = [
     name: "Water Sensors", sub: "48 devices · IoT mesh",
     icon: <path d="M12 2.69 5.6 9.09a9 9 0 1 0 12.8 0z" />,
     avatar: "AQ", avatarBg: "#2563EB", account: "Aquatech Grid", tag: null,
-    status: "green", statusLabel: "Active", freq: "2s", spark: "up", mvNum: "64 / day", mvLbl: "flow · quality",
+    status: "green", statusLabel: "Active", freq: "2s", spark: "up", mvNum: "2,480 m³/h", mvLbl: "flow rate",
   },
   {
     name: "Energy Grid", sub: "Scope 2 · kWh meters",
     icon: <path d="m13 2-8 11h6l-1 9 8-11h-6z" />,
     avatar: "NG", avatarBg: "#0E9E6E", account: "National Grid", tag: null,
-    status: "green", statusLabel: "Active", freq: "15s", spark: "steady", mvNum: "38 / day", mvLbl: "consumption",
+    status: "green", statusLabel: "Active", freq: "15s", spark: "steady", mvNum: "18.4 MWh", mvLbl: "today",
   },
   {
     name: "Supply Chain", sub: "Scope 3 · 11 tier-1 vendors",
     icon: <><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z" /><circle cx="7" cy="18" r="1.6" /><circle cx="17" cy="18" r="1.6" /></>,
     avatar: "ML", avatarBg: "#C026D3", account: "Maersk Logistics", tag: "Partner",
-    status: "green", statusLabel: "Active", freq: "6h", spark: "steady", mvNum: "27 / day", mvLbl: "emissions",
+    status: "green", statusLabel: "Active", freq: "6h", spark: "steady", mvNum: "312 tCO₂e", mvLbl: "this month",
   },
   {
     name: "Climate API", sub: "REST · regional factors",
@@ -214,7 +214,7 @@ const css = `
 }
 .ds-root * { box-sizing: border-box; }
 
-.ds-panel { width: 100%; background: var(--ds-surface); border: 1px solid var(--ds-border); border-radius: 16px; box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 30px 70px -45px rgba(0,0,0,0.7); overflow: hidden; }
+.ds-panel { width: 100%; background: var(--ds-surface); border: 1px solid var(--ds-border); border-radius: 16px; box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 30px 70px -45px rgba(0,0,0,0.7); overflow: auto; }
 
 /* Header */
 .ds-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 18px; border-bottom: 1px solid var(--ds-border); flex-wrap: wrap; }

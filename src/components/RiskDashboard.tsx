@@ -344,14 +344,13 @@ const css = `
   .risk-pill-live { display: none; }
 }
 
-/* ── Roomy: 3-column dashboard like the original ── */
+/* ── Roomy: 3-column dashboard. Natural height (no fixed aspect-ratio) so
+   content is never clipped — the outer frame scrolls when it overflows. ── */
 @container (min-width: 680px) {
-  .risk-inner { aspect-ratio: 6 / 5; }
-  .risk-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr 0.92fr; gap: 18px; }
-  .risk-col { height: 100%; }
+  .risk-grid { display: grid; grid-template-columns: 1fr 1fr 0.92fr; gap: 18px; }
   .risk-exposure { flex: 1; min-height: 0; }
   .risk-trend-card { flex: 1; min-height: 0; }
-  .risk-trend-svg { flex: 1; height: auto; min-height: 0; }
+  .risk-trend-svg { flex: 1; min-height: 120px; }
   .risk-feed-card { min-height: 0; }
   /* score ring + meta stack vertically in the narrow column */
   .risk-score-body { flex-direction: column; align-items: center; text-align: center; gap: 14px; }

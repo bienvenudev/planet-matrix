@@ -328,14 +328,15 @@ const css = `
   .crd-legend-rows { width: 100%; }
 }
 
-/* ── Roomy: restore the side-by-side 2-column dashboard ── */
+/* ── Roomy: side-by-side 2-column dashboard. Natural height (no fixed
+   aspect-ratio) so content is never clipped — the outer frame scrolls. ── */
 @container (min-width: 600px) {
-  .crd-inner { aspect-ratio: 16 / 10.4; gap: 14px; }
-  .crd-grid { flex: 1; display: grid; grid-template-columns: 1.32fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; }
+  .crd-inner { gap: 14px; }
+  .crd-grid { display: grid; grid-template-columns: 1.32fr 1fr; grid-template-rows: auto auto; gap: 14px; }
   .crd-area-donut { grid-column: 1; grid-row: 1; }
   .crd-area-chart-card { grid-column: 1; grid-row: 2; }
   .crd-area-fw { grid-column: 2; grid-row: 1 / span 2; }
-  .crd-area-chart { height: auto; flex: 1; }
+  .crd-area-chart { height: 150px; }
   .crd-donut-body { gap: 10px; }
 }
 `;
