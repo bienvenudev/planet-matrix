@@ -36,7 +36,7 @@ export default function LoginPage() {
 
           {/* Heading */}
           <div className="text-center">
-            <h1 className="font-['Manrope'] font-extrabold text-[1.9rem] tracking-tight text-[#f0eeff] mb-1">Welcome back</h1>
+            <h1 className="font-['Manrope'] font-extrabold text-[1.9rem] tracking-tight text-[#f0eeff] mb-1">Welcome Back</h1>
             <p className="text-base text-[#a89dc8]">Sign in to your PlanetMatrix account</p>
           </div>
 
