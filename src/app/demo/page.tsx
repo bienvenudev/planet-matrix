@@ -26,7 +26,7 @@ export default function DemoPage() {
           <button
             onClick={() => document.getElementById("demo-form")?.scrollIntoView({ behavior: "smooth" })}
             className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">
-            Book a demo
+            Book A Demo
           </button>
         </div>
       </nav>
@@ -41,7 +41,7 @@ export default function DemoPage() {
         <div className="relative z-10 flex flex-col justify-center px-[8%] py-20">
           <div className="flex items-center gap-2 text-[#b97bff] font-semibold mb-8">
             <span>📅</span>
-            <span className="text-base uppercase tracking-[0.1em]">Book a Demo</span>
+            <span className="text-base uppercase tracking-[0.1em]">Book A Demo</span>
           </div>
           <h1 className="font-['Manrope'] font-extrabold text-[clamp(2rem,3.8vw,3rem)] leading-[1.08] tracking-[-0.03em] mb-6">
             Simplify Compliance.<br />

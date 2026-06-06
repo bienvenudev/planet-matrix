@@ -142,7 +142,7 @@ export default function Home() {
         </ul>
         <div className="flex items-center gap-3">
           <Link href="/login" className="text-base font-medium text-[#a89dc8] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#f0eeff] rounded-lg px-4 py-2 bg-transparent transition-all">Log In</Link>
-          <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book a demo</Link>
+          <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book A Demo</Link>
         </div>
       </nav>
 
@@ -159,7 +159,7 @@ export default function Home() {
             Manage all your ESG needs on one platform, automate your reporting, and get a complete view of sustainability performance across industries, farms, factories, and smart cities worldwide.
           </p>
           <div className="animate-fade-up-4 flex gap-4 flex-wrap justify-center">
-            <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-9 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book a demo</Link>
+            <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-9 py-3.5 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book A Demo</Link>
             <button onClick={() => scrollTo("how")} className="text-base font-medium text-[#f0eeff] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#b97bff] rounded-xl px-9 py-3.5 bg-transparent transition-all">See how it works</button>
           </div>
         </div>
@@ -385,7 +385,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-['Manrope'] font-extrabold text-[clamp(1.7rem,3.5vw,2.6rem)] tracking-tight text-[#f0eeff] mb-4">Ready to simplify your ESG?</h2>
           <p className="text-lg text-[#a89dc8] leading-relaxed mb-8">Schedule a demo and see how PlanetMatrix can transform your sustainability data into real impact.</p>
-          <Link href="/demo" className="inline-block text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-10 py-4 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book a Demo →</Link>
+          <Link href="/demo" className="inline-block text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-xl px-10 py-4 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgba(124,58,237,0.4)]">Book A Demo →</Link>
         </div>
       </section>
 
@@ -400,7 +400,7 @@ export default function Home() {
             <p className="text-[0.8rem] text-[#b97bff] mt-2">www.planet-matrix.com</p>
           </div>
           {[
-            { h: "Platform", links: [["Capabilities", "#solutions"], ["How It Works", "#how"], ["Compliance", "#compliance"], ["Book a Demo", "/demo"]] },
+            { h: "Platform", links: [["Capabilities", "#solutions"], ["How It Works", "#how"], ["Compliance", "#compliance"], ["Book A Demo", "/demo"]] },
             { h: "Company", links: [["About", "#about"], ["Careers", "#"], ["Press", "#"], ["Contact", "#"]] },
             { h: "Legal", links: [["Privacy Policy", "#"], ["Terms of Service", "#"], ["Cookie Policy", "#"], ["Data Processing", "#"]] },
           ].map(col => (
@@ -417,8 +417,31 @@ export default function Home() {
         <div className="max-w-7xl mx-auto border-t border-white/[0.07] pt-6 flex items-center justify-between flex-wrap gap-4">
           <p className="text-[0.78rem] text-[#5e567a]">© 2026 PlanetMatrix. All rights reserved. | info@planet-matrix.com</p>
           <div className="flex gap-3">
-            {["in", "𝕏", "ig"].map((s, i) => (
-              <a key={i} href="#" className="w-8 h-8 rounded-lg bg-[#0e0b1a] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#b97bff] flex items-center justify-center text-[#5e567a] text-xs font-bold transition-all">{s}</a>
+            {[
+              { href: "#", label: "LinkedIn", content: "in" },
+              { href: "#", label: "X", content: "𝕏" },
+              {
+                href: "https://www.instagram.com/planetmatrix1",
+                label: "Instagram",
+                content: (
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                ),
+              },
+            ].map((s, i) => (
+              <a
+                key={i}
+                href={s.href}
+                aria-label={s.label}
+                target={s.href.startsWith("http") ? "_blank" : undefined}
+                rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="w-8 h-8 rounded-lg bg-[#0e0b1a] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#b97bff] flex items-center justify-center text-[#5e567a] text-xs font-bold transition-all"
+              >
+                {s.content}
+              </a>
             ))}
           </div>
         </div>
