@@ -16,7 +16,7 @@ export default function LoginPage() {
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
           <Image src="/PlanetMatrix-Logo-light.png" alt="PlanetMatrix" width={1346} height={265} className="h-6 sm:h-7 md:h-8 w-auto" priority />
         </Link>
-        <ul className="hidden md:flex items-center gap-8 list-none">
+        <ul className="hidden lg:flex items-center gap-6 list-none">
           {(["Solutions","How It Works","Compliance","About"] as const).map((l, i) => (
             <li key={l}>
               <Link href={`/#${["solutions","how","compliance","about"][i]}`} className="text-base text-[#a89dc8] hover:text-[#f0eeff] transition-colors">{l}</Link>
@@ -24,8 +24,8 @@ export default function LoginPage() {
           ))}
         </ul>
         <div className="flex items-center gap-3">
-          <span className="text-base font-medium text-[#a89dc8] border border-white/[0.07] rounded-lg px-4 py-2 opacity-50 cursor-default">Log In</span>
-          <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book A Demo</Link>
+          <span className="text-sm sm:text-base font-medium text-[#a89dc8] border border-white/[0.07] rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap opacity-50 cursor-default">Log In</span>
+          <Link href="/demo" className="text-sm sm:text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap transition-all hover:-translate-y-px">Book A Demo</Link>
         </div>
       </nav>
 

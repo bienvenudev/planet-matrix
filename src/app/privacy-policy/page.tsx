@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
           <Image src="/PlanetMatrix-Logo-light.png" alt="PlanetMatrix" width={1346} height={265} className="h-6 sm:h-7 md:h-8 w-auto" priority />
         </Link>
-        <ul className="hidden md:flex items-center gap-8 list-none">
+        <ul className="hidden lg:flex items-center gap-6 list-none">
           {(["Solutions", "How It Works", "Compliance", "About"] as const).map((l, i) => (
             <li key={l}>
               <Link href={`/${["#solutions", "#how", "#compliance", "#about"][i]}`} className="text-base text-[#a89dc8] hover:text-[#f0eeff] transition-colors">{l}</Link>
@@ -59,8 +59,8 @@ export default function PrivacyPolicyPage() {
           ))}
         </ul>
         <div className="flex items-center gap-3">
-          <Link href="/login" className="text-base font-medium text-[#a89dc8] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#f0eeff] rounded-lg px-4 py-2 bg-transparent transition-all">Log In</Link>
-          <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book A Demo</Link>
+          <Link href="/login" className="text-sm sm:text-base font-medium text-[#a89dc8] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#f0eeff] rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap bg-transparent transition-all">Log In</Link>
+          <Link href="/demo" className="text-sm sm:text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap transition-all hover:-translate-y-px">Book A Demo</Link>
         </div>
       </nav>
 

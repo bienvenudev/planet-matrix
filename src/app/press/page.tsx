@@ -36,7 +36,7 @@ export default function PressPage() {
         </Link>
         <div className="flex items-center gap-3">
           <Link href="/" className="text-base font-medium text-[#a89dc8] border border-white/[0.07] hover:border-[#7c3aed]/40 hover:text-[#f0eeff] rounded-lg px-4 py-2 transition-all">← Home</Link>
-          <Link href="/demo" className="text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-4 py-2 transition-all hover:-translate-y-px">Book A Demo</Link>
+          <Link href="/demo" className="text-sm sm:text-base font-semibold text-white bg-[#7c3aed] hover:bg-[#9d5cf6] rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap transition-all hover:-translate-y-px">Book A Demo</Link>
         </div>
       </nav>
 
