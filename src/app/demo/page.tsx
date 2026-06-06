@@ -50,6 +50,7 @@ export default function DemoPage() {
       companyType: fd.get("company_type"),
       country: fd.get("country"),
       priority: fd.get("priority"),
+      language: fd.get("language"),
       message: fd.get("message"),
       optIn: fd.get("opt_in") ? "Yes" : "No",
     };
@@ -162,6 +163,7 @@ export default function DemoPage() {
               ]} />
               <SelectField label="Country / Region *" name="country" required options={COUNTRIES} />
               <SelectField label="My top priority is" name="priority" options={["Collecting and managing data", "Finding a reporting solution", "Measuring carbon emissions", "Sharing ESG information with stakeholders", "Understanding performance/benchmarks", "Reporting sustainability driven outcomes", "Preparing to comply with regulation"]} />
+              <SelectField label="Preferred Language *" name="language" required options={["English", "German", "French"]} />
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">Message</label>
                 <textarea name="message" placeholder="Tell us about your ESG or sustainability goals..." rows={3}

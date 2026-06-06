@@ -17,6 +17,7 @@ type DemoRequest = {
   companyType?: string;
   country?: string;
   priority?: string;
+  language?: string;
   message?: string;
   optIn?: string;
 };
@@ -45,6 +46,7 @@ export async function POST(request: Request) {
     companyType,
     country,
     priority,
+    language,
     message,
     optIn,
   } = body ?? {};
@@ -77,6 +79,7 @@ export async function POST(request: Request) {
     ["Company type", companyType],
     ["Country / Region", country],
     ["Top priority", priority],
+    ["Preferred language", language],
     ["Marketing opt-in", optIn],
   ];
 
@@ -133,7 +136,8 @@ export async function POST(request: Request) {
     `Thank you for requesting a demo of PlanetMatrix! We've received your request and a member of our team will be in touch within 24 hours to schedule your call.\n\n` +
     `Here's a quick summary of what you sent us:\n` +
     `• Company: ${company}\n` +
-    `• Top priority: ${priority || "—"}\n\n` +
+    `• Top priority: ${priority || "—"}\n` +
+    `• Preferred language: ${language || "—"}\n\n` +
     `Your message:\n${message || "—"}\n\n` +
     `In the meantime, just reply to this email if you have any questions.\n\n` +
     `Best regards,\nThe PlanetMatrix Team`;
@@ -146,6 +150,7 @@ export async function POST(request: Request) {
       <ul style="margin-top:0">
         <li>Company: ${esc(company)}</li>
         <li>Top priority: ${esc(priority) || "—"}</li>
+        <li>Preferred language: ${esc(language) || "—"}</li>
       </ul>
       <p style="margin-bottom:4px"><strong>Your message:</strong></p>
       <p style="margin-top:0;white-space:pre-wrap">${esc(message) || "—"}</p>
