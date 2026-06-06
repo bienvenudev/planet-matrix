@@ -1,5 +1,12 @@
 // Right-hand "live" panel shown beside the login / register forms.
 // Gradient field + faint pill grid + breathing glows + floating metric pills.
+//
+// Layout is a 3-zone flex column: a top pill band, the centered headline
+// (its own flex track), and a bottom pill band. Pills live in wrapping flex
+// rows — never absolutely positioned over the text — so they can't collide
+// with the headline at any panel width.
+
+import type { ReactNode } from "react";
 
 const PILL_GRID = [
   { top: "8%", left: "10%", w: 120 },
@@ -14,9 +21,52 @@ const PILL_GRID = [
   { top: "90%", left: "60%", w: 130 },
 ];
 
+type Pill = { label: string; icon: ReactNode; anim: string; offset: string };
+
+// 24×24 stroke icons, themed to each label.
+const ICONS = {
+  emissions: (<><path d="M3 17l6-6 4 4 7-7" /><path d="M14 7h6v6" /></>),
+  energy: (<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />),
+  water: (<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />),
+  social: (<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>),
+  compliance: (<><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.5 2.5 4.5-5" /></>),
+  environmental: (<><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" /><path d="M2 21c0-3 1.85-5.36 5.08-6" /></>),
+  reporting: (<><rect x="4" y="11" width="3.5" height="9" rx="1" /><rect x="10.25" y="6" width="3.5" height="14" rx="1" /><rect x="16.5" y="14" width="3.5" height="6" rx="1" /></>),
+};
+
+// Pills spread to the sides via `justify-between`; `offset` gives each a
+// different vertical position so they scatter instead of forming a tidy row,
+// and pulls several inward toward the headline. We use margin (not translate)
+// so it doesn't fight the float animation, which drives `transform`.
+const TOP_PILLS: Pill[] = [
+  { label: "Emissions", icon: ICONS.emissions, anim: "animate-float-slow", offset: "mt-2" },
+  { label: "Water", icon: ICONS.water, anim: "animate-float-med", offset: "mt-24" },
+  { label: "Energy", icon: ICONS.energy, anim: "animate-float-fast", offset: "mt-10" },
+];
+
+const BOTTOM_PILLS: Pill[] = [
+  { label: "Social", icon: ICONS.social, anim: "animate-float-med", offset: "mb-20" },
+  { label: "Compliance", icon: ICONS.compliance, anim: "animate-float-slow", offset: "mb-2" },
+  { label: "Environmental", icon: ICONS.environmental, anim: "animate-float-fast", offset: "mb-14" },
+  { label: "Reporting", icon: ICONS.reporting, anim: "animate-float-slow", offset: "mb-1" },
+];
+
+function MetricPill({ label, icon, anim, offset }: Pill) {
+  return (
+    <div className={`${anim} ${offset} flex items-center gap-2.5 bg-white/95 rounded-full pl-3 pr-4 py-2.5 shadow-[0_12px_40px_rgba(80,30,160,0.35)]`}>
+      <span className="grid place-items-center w-7 h-7 rounded-full bg-[#7c3aed]/15 shrink-0">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          {icon}
+        </svg>
+      </span>
+      <span className="text-sm font-semibold text-[#1a1130] whitespace-nowrap">{label}</span>
+    </div>
+  );
+}
+
 export default function AuthShowcase() {
   return (
-    <div className="relative hidden lg:flex flex-1 overflow-hidden rounded-3xl m-3 bg-gradient-to-br from-[#1c1145] via-[#150a32] to-[#0c0620]">
+    <div className="relative hidden lg:flex flex-col overflow-hidden rounded-3xl m-3 bg-gradient-to-br from-[#1c1145] via-[#150a32] to-[#0c0620]">
       {/* breathing glows */}
       <div className="animate-glow absolute -top-24 -left-16 w-[420px] h-[420px] rounded-full bg-[#7c3aed]/40 blur-[120px]" />
       <div className="animate-glow absolute bottom-0 right-0 w-[380px] h-[380px] rounded-full bg-[#b97bff]/30 blur-[120px] [animation-delay:3s]" />
@@ -32,45 +82,29 @@ export default function AuthShowcase() {
         ))}
       </div>
 
-      {/* floating metric pills */}
-      <div className="animate-float-slow absolute top-[16%] right-[14%] flex items-center gap-2.5 bg-white/95 rounded-full pl-3 pr-4 py-2.5 shadow-[0_12px_40px_rgba(80,30,160,0.35)]">
-        <span className="grid place-items-center w-7 h-7 rounded-full bg-[#7c3aed]/15">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 17l6-6 4 4 7-7" /><path d="M14 7h6v6" />
-          </svg>
-        </span>
-        <span className="text-sm font-semibold text-[#1a1130]">Emissions</span>
+      {/* top pill band — spread to the corners/sides */}
+      <div className="relative z-10 flex flex-wrap items-start justify-between gap-3 px-6 pt-8">
+        {TOP_PILLS.map((p) => <MetricPill key={p.label} {...p} />)}
       </div>
 
-      <div className="animate-float-med absolute top-[40%] left-[10%] flex items-center gap-2.5 bg-white/95 rounded-full pl-3 pr-4 py-2.5 shadow-[0_12px_40px_rgba(80,30,160,0.35)]">
-        <span className="grid place-items-center w-7 h-7 rounded-full bg-[#7c3aed]/15">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 12l2 2 4-4" /><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
-          </svg>
-        </span>
-        <span className="text-sm font-semibold text-[#1a1130]">Compliance</span>
+      {/* headline — its own flex track, so pills never reach it */}
+      <div className="relative z-10 flex-1 grid place-items-center px-12 py-2">
+        <div className="text-center max-w-md">
+          <h2 className="font-['Manrope'] font-extrabold leading-[1.08] tracking-[-0.02em] text-[clamp(2rem,3vw,2.8rem)] text-white">
+            Simplify ESG.
+            <br />
+            <span className="text-[#c8a6ff]">Amplify Impact.</span>
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-[#cabfe8]">
+            Introducing the next generation of ESG reporting and sustainability
+            intelligence.
+          </p>
+        </div>
       </div>
 
-      <div className="animate-float-fast absolute bottom-[16%] right-[20%] flex items-center gap-2.5 bg-white/95 rounded-full pl-3 pr-4 py-2.5 shadow-[0_12px_40px_rgba(80,30,160,0.35)]">
-        <span className="grid place-items-center w-7 h-7 rounded-full bg-[#7c3aed]/15">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M4 19V5" /><rect x="7" y="11" width="3" height="8" rx="1" /><rect x="13" y="7" width="3" height="12" rx="1" /><rect x="19" y="13" width="2" height="6" rx="1" />
-          </svg>
-        </span>
-        <span className="text-sm font-semibold text-[#1a1130]">Reporting</span>
-      </div>
-
-      {/* headline */}
-      <div className="relative z-10 m-auto px-12 text-center max-w-md">
-        <h2 className="font-['Manrope'] font-extrabold leading-[1.08] tracking-[-0.02em] text-[clamp(2rem,3vw,2.8rem)] text-white">
-          Simplify ESG.
-          <br />
-          <span className="text-[#c8a6ff]">Amplify Impact.</span>
-        </h2>
-        <p className="mt-4 text-base leading-relaxed text-[#cabfe8]">
-          Introducing the next generation of ESG reporting and sustainability
-          intelligence.
-        </p>
+      {/* bottom pill band — spread to the corners/sides */}
+      <div className="relative z-10 flex flex-wrap items-end justify-between gap-3 px-6 pb-8">
+        {BOTTOM_PILLS.map((p) => <MetricPill key={p.label} {...p} />)}
       </div>
     </div>
   );
