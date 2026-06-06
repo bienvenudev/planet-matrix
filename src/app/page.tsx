@@ -401,7 +401,12 @@ export default function Home() {
           </div>
           {[
             { h: "Platform", links: [["Capabilities", "#solutions"], ["How It Works", "#how"], ["Compliance", "#compliance"], ["Book A Demo", "/demo"]] },
-            { h: "Company", links: [["About", "#about"], ["Careers", "/careers"], ["Press", "/press"], ["Contact", "/contact"]] },
+            { h: "Company", links: [
+              ["About", "#about"],
+              ["Careers", "/careers"],
+              ["Press", "/press"],
+              // ["Contact", "/contact"],  // commented out — uncomment when ready
+            ]},
             { h: "Legal", links: [["Privacy Policy", "/privacy-policy"]] },
           ].map(col => (
             <div key={col.h}>
@@ -418,8 +423,8 @@ export default function Home() {
           <p className="text-[0.78rem] text-[#5e567a]">© 2026 PlanetMatrix. All rights reserved. | info@planet-matrix.com</p>
           <div className="flex gap-3">
             {[
-              { href: "#", label: "LinkedIn", content: "in" },
-              { href: "#", label: "X", content: "𝕏" },
+              { href: "info@planet-matrix.com", label: "LinkedIn", content: "In" },
+              // { href: "#", label: "X", content: "𝕏" },
               {
                 href: "https://www.instagram.com/planetmatrix1",
                 label: "Instagram",
