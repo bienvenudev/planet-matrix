@@ -9,12 +9,12 @@ const VALUES = [
 ];
 
 const PERKS = [
-  "Remote-first, flexible hours",
-  "Competitive salary & equity",
-  "Annual learning budget",
+  "Remote-first",
+  "Flexible hours",
+  "Competitive salary and equity",
   "Work that fights climate change",
-  "Global, diverse team",
-  "Regular team off-sites",
+  "Global and diverse team",
+  "Invitation to international conventions",
 ];
 
 const ROLES = [
