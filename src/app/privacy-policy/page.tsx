@@ -50,9 +50,9 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-[#08060f] text-[#f0eeff] overflow-x-hidden">
 
       {/* ── Nav ── */}
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-[6%] h-[72px] border-b border-white/[0.07] bg-[#08060f]/90 backdrop-blur-xl">
+      <nav className="flex items-center justify-between px-[6%] h-[72px] border-b border-white/[0.07]">
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <Image src="/planet-matrix-logo.jpeg" alt="PlanetMatrix" width={128} height={64} className="rounded-full object-cover h-11 w-11" priority />
+          <Image src="/planet-matrix-logo.jpeg" alt="PlanetMatrix" width={128} height={64} className="rounded-full object-cover" priority />
         </Link>
         <ul className="hidden md:flex items-center gap-8 list-none">
           {(["Solutions", "How It Works", "Compliance", "About"] as const).map((l, i) => (

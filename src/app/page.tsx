@@ -180,7 +180,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <StatCard target={25} suffix="%" label="Saving in water consumption" />
           <StatCard target={20} suffix="%" label="Lowering in energy cost" />
-          <StatCard target={10000000} suffix="" label="Tonnes reduction in carbon emissions" />
+          <StatCard target={10} suffix="M" label="Tonnes reduction in carbon emissions" />
           <StatCard target={95} suffix="%" label="Accuracy in water, energy, & carbon detection using AI, IoT and digital twin" />
         </div>
       </div>
