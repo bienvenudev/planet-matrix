@@ -1,7 +1,17 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
+
+// EmailJS config. The public key is designed to be exposed client-side.
+// Sends the "Demo Request" template; the Auto-Reply template is linked inside
+// it on the EmailJS dashboard, so the submitter is notified automatically.
+const EMAILJS = {
+  serviceId: "service_th83hkp",
+  templateId: "template_mb4ytqp",
+  publicKey: "MTnyHpw0XOom3zGwA",
+};
 
 const COUNTRIES = [
   "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
@@ -31,7 +41,18 @@ const COUNTRIES = [
 ];
 
 export default function DemoPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current || status === "sending") return;
+    setStatus("sending");
+    emailjs
+      .sendForm(EMAILJS.serviceId, EMAILJS.templateId, formRef.current, { publicKey: EMAILJS.publicKey })
+      .then(() => setStatus("success"))
+      .catch(() => setStatus("error"));
+  };
 
   return (
     <div className="min-h-screen bg-[#08060f] text-[#f0eeff] overflow-x-hidden">
@@ -94,41 +115,44 @@ export default function DemoPage() {
 
         {/* ── Right: form ── */}
         <div id="demo-form" className="relative z-10 flex flex-col justify-center px-[8%] lg:px-16 py-20">
-          {!submitted ? (
-            <div className="flex flex-col gap-4 max-w-lg w-full">
+          {status !== "success" ? (
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-lg w-full">
               <div className="grid grid-cols-2 gap-4">
-                <Field label="First Name *" type="text" placeholder="Sarah" />
-                <Field label="Last Name *" type="text" placeholder="Johnson" />
+                <Field label="First Name *" type="text" name="first_name" placeholder="Sarah" required />
+                <Field label="Last Name *" type="text" name="last_name" placeholder="Johnson" required />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Field label="Work Email *" type="email" placeholder="sarah@company.com" />
-                <Field label="Phone Number" type="tel" placeholder="+1 555 000 0000" />
+                <Field label="Work Email *" type="email" name="email" placeholder="sarah@company.com" required />
+                <Field label="Phone Number" type="tel" name="phone" placeholder="+1 555 000 0000" />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Field label="Company Name *" type="text" placeholder="Your organization" />
-                <Field label="Job Title" type="text" placeholder="Sustainability Lead" />
+                <Field label="Company Name *" type="text" name="company" placeholder="Your organization" required />
+                <Field label="Job Title" type="text" name="job_title" placeholder="Sustainability Lead" />
               </div>
-              <SelectField label="Type of Company *" options={["Agriculture / Farming", "Manufacturing / Factory", "Real Estate / Property", "Energy & Utilities", "Financial Services", "Government / Municipality", "NGO / Non-Profit", "Other"]} />
-              <SelectField label="Country / Region *" options={COUNTRIES} />
-              <SelectField label="My top priority is" options={["Collecting and managing data", "Finding a reporting solution", "Measuring carbon emissions", "Sharing ESG information with stakeholders", "Understanding performance/benchmarks", "Reporting sustainability driven outcomes", "Preparing to comply with regulation"]} />
+              <SelectField label="Type of Company *" name="company_type" required options={["Agriculture / Farming", "Manufacturing / Factory", "Real Estate / Property", "Energy & Utilities", "Financial Services", "Government / Municipality", "NGO / Non-Profit", "Other"]} />
+              <SelectField label="Country / Region *" name="country" required options={COUNTRIES} />
+              <SelectField label="My top priority is" name="priority" options={["Collecting and managing data", "Finding a reporting solution", "Measuring carbon emissions", "Sharing ESG information with stakeholders", "Understanding performance/benchmarks", "Reporting sustainability driven outcomes", "Preparing to comply with regulation"]} />
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">Message</label>
-                <textarea placeholder="Tell us about your ESG or sustainability goals..." rows={3}
+                <textarea name="message" placeholder="Tell us about your ESG or sustainability goals..." rows={3}
                   className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-base text-[#f0eeff] placeholder-[#5e567a] outline-none resize-y transition-all" />
               </div>
               <label className="flex items-start gap-2 text-base text-[#5e567a] cursor-pointer">
-                <input type="checkbox" className="mt-1 accent-[#7c3aed]" />
+                <input type="checkbox" name="opt_in" value="Yes" className="mt-1 accent-[#7c3aed]" />
                 I agree to receive industry insights and relevant updates from PlanetMatrix.
               </label>
               <p className="text-base text-[#5e567a] leading-relaxed">
                 By clicking the button below, you consent to allow PlanetMatrix to store and process the personal information submitted above subject to {" "}
                 <Link href="/privacy-policy" className="text-[#b97bff] hover:underline">Privacy Policy</Link>.
               </p>
-              <button onClick={() => setSubmitted(true)}
-                className="w-full bg-[#7c3aed] hover:bg-[#9d5cf6] text-white font-semibold text-base rounded-lg py-4 transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)] uppercase tracking-widest mt-1">
-                Request a Demo →
+              {status === "error" && (
+                <p className="text-base text-[#ff8a8a]">Something went wrong sending your request. Please try again, or email us at info@planet-matrix.com.</p>
+              )}
+              <button type="submit" disabled={status === "sending"}
+                className="w-full bg-[#7c3aed] hover:bg-[#9d5cf6] disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold text-base rounded-lg py-4 transition-all hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)] uppercase tracking-widest mt-1">
+                {status === "sending" ? "Sending…" : "Request a Demo →"}
               </button>
-            </div>
+            </form>
           ) : (
             <div className="bg-[#7c3aed]/[0.14] border border-[#7c3aed]/25 rounded-2xl p-10 text-center max-w-lg">
               <p className="font-['Manrope'] text-xl font-bold text-[#b97bff] mb-3">🌍 Thank you!</p>
@@ -143,21 +167,21 @@ export default function DemoPage() {
 }
 
 /* ─── Form atoms ─────────────────────────────────────────── */
-function Field({ label, type, placeholder }: { label: string; type: string; placeholder: string }) {
+function Field({ label, type, placeholder, name, required }: { label: string; type: string; placeholder: string; name: string; required?: boolean }) {
   return (
     <div className="flex flex-col gap-1.5">
       <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
-      <input type={type} placeholder={placeholder}
+      <input type={type} name={name} required={required} placeholder={placeholder}
         className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 focus:ring-2 focus:ring-[#7c3aed]/10 rounded-lg px-3.5 py-2.5 text-base text-[#f0eeff] placeholder-[#5e567a] outline-none transition-all" />
     </div>
   );
 }
 
-function SelectField({ label, options }: { label: string; options: string[] }) {
+function SelectField({ label, options, name, required }: { label: string; options: string[]; name: string; required?: boolean }) {
   return (
     <div className="flex flex-col gap-1.5">
       <label className="text-sm text-[#5e567a] font-medium uppercase tracking-widest">{label}</label>
-      <select className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 rounded-lg px-3.5 py-2.5 text-base text-[#a89dc8] outline-none transition-all">
+      <select name={name} required={required} defaultValue="" className="w-full bg-[#130f22] border border-white/[0.07] focus:border-[#7c3aed]/40 rounded-lg px-3.5 py-2.5 text-base text-[#a89dc8] outline-none transition-all">
         <option value="">Please Select</option>
         {options.map(o => <option key={o} className="bg-[#08060f]">{o}</option>)}
       </select>
