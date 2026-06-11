@@ -4,7 +4,7 @@ import { Resend } from "resend";
 // Sends the submission to the team via Resend and auto-replies to the submitter.
 // Requires RESEND_API_KEY in the environment (see .env.local).
 
-const TO = "cbienvenu007@gmail.com";
+const TO = "Jaberjameel00@gmail.com";
 const FROM = "info@planet-matrix.com";
 
 // Absolute base URL so the logo resolves in email clients (override per env).

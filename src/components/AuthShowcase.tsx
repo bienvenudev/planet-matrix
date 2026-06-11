@@ -25,12 +25,11 @@ type Pill = { label: string; icon: ReactNode; anim: string; offset: string };
 
 // 24×24 stroke icons, themed to each label.
 const ICONS = {
-  emissions: (<><path d="M3 17l6-6 4 4 7-7" /><path d="M14 7h6v6" /></>),
-  energy: (<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />),
-  water: (<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />),
-  social: (<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>),
+  carbon: (<><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" /><path d="M2 21c0-3 1.85-5.36 5.08-6" /></>),
+  decarbonization: (<><polyline points="23 18 13.5 8.5 8.5 13.5 1 6" /><polyline points="17 18 23 18 23 12" /></>),
+  netZero: (<><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></>),
+  circularity: (<><polyline points="1 4 1 10 7 10" /><polyline points="23 20 23 14 17 14" /><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" /></>),
   compliance: (<><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.5 2.5 4.5-5" /></>),
-  environmental: (<><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" /><path d="M2 21c0-3 1.85-5.36 5.08-6" /></>),
   reporting: (<><rect x="4" y="11" width="3.5" height="9" rx="1" /><rect x="10.25" y="6" width="3.5" height="14" rx="1" /><rect x="16.5" y="14" width="3.5" height="6" rx="1" /></>),
 };
 
@@ -39,16 +38,15 @@ const ICONS = {
 // and pulls several inward toward the headline. We use margin (not translate)
 // so it doesn't fight the float animation, which drives `transform`.
 const TOP_PILLS: Pill[] = [
-  { label: "Emissions", icon: ICONS.emissions, anim: "animate-float-slow", offset: "mt-2" },
-  { label: "Water", icon: ICONS.water, anim: "animate-float-med", offset: "mt-24" },
-  { label: "Energy", icon: ICONS.energy, anim: "animate-float-fast", offset: "mt-10" },
+  { label: "Carbon", icon: ICONS.carbon, anim: "animate-float-slow", offset: "mt-2" },
+  { label: "Decarbonization", icon: ICONS.decarbonization, anim: "animate-float-med", offset: "mt-24" },
+  { label: "Net Zero", icon: ICONS.netZero, anim: "animate-float-fast", offset: "mt-10" },
 ];
 
 const BOTTOM_PILLS: Pill[] = [
-  { label: "Social", icon: ICONS.social, anim: "animate-float-med", offset: "mb-20" },
+  { label: "Circularity", icon: ICONS.circularity, anim: "animate-float-med", offset: "mb-20" },
   { label: "Compliance", icon: ICONS.compliance, anim: "animate-float-slow", offset: "mb-2" },
-  { label: "Environmental", icon: ICONS.environmental, anim: "animate-float-fast", offset: "mb-14" },
-  { label: "Reporting", icon: ICONS.reporting, anim: "animate-float-slow", offset: "mb-1" },
+  { label: "Reporting", icon: ICONS.reporting, anim: "animate-float-fast", offset: "mb-14" },
 ];
 
 function MetricPill({ label, icon, anim, offset }: Pill) {
